@@ -31,6 +31,14 @@ import { taskService } from "../../services/tasks-service";
 // "masteryLevel": "Excellent",
 // "comment": "Excellent work"
 
+const tomorrowsDate = () => {
+    const today = new Date()
+    let tomorrow = new Date()
+    tomorrow.setDate(today.getDate() + 1)
+    return tomorrow
+}
+
+
 const styleBlock = {
     margin: {
         marginBottom: "18px",
@@ -50,12 +58,12 @@ const initialTaskState =
 
 export default function AddTask() {
     const userContext = useLoginStore(state => state.userContext)
-    if(userContext.role != 'teacher') return <></>
+    if (userContext.role != 'teacher') return <></>
     const [task, setTask] = useState(initialTaskState);
     const [students, setStudents] = useState(parent_student.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id))
 
     useEffect(() => {
-        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type:"Memorization"});
+        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type: "Memorization", dueDate: `${tomorrowsDate().toDateString().substring(4)}` });
     }, []);
 
     const handleChange = (e) => {
@@ -78,7 +86,7 @@ export default function AddTask() {
     };
 
     return (
-        <div style={{marginBottom: "10px"}}>
+        <div style={{ marginBottom: "10px" }}>
             <Stack flexDirection="row" >
                 <Typography
                     variant="h5"
@@ -143,7 +151,7 @@ export default function AddTask() {
                             </Select>
                         </Stack>
 
-                        
+
                     </Stack>
 
                     <Stack
@@ -200,45 +208,45 @@ export default function AddTask() {
 
                 </Stack>
 
-                <Stack flexDirection="row" sx={{ marginTop: "30px", marginLeft:"330px"}}>
-                        <Typography
-                            sx={{
-                                marginTop: "10px",
-                                marginRight: "22px",
-                                color: "#3A3B3C",
-                            }}
-                        >
-                            Task Type
-                        </Typography>
-                        <RadioGroup
-                            row
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            value={task.type}
-                            name="type"
-                            onChange={handleChange}
-                        >
-                            <FormControlLabel
-                                value="Memorization"
-                                control={<Radio />}
-                                label="Memorization"
-                                
-                            />
-                            <FormControlLabel
-                                value="Revision"
-                                control={<Radio />}
-                                label="Revision"
-                            />
-                        </RadioGroup>
-                    </Stack>
+                <Stack flexDirection="row" sx={{ marginTop: "30px", marginLeft: "330px" }}>
+                    <Typography
+                        sx={{
+                            marginTop: "10px",
+                            marginRight: "22px",
+                            color: "#3A3B3C",
+                        }}
+                    >
+                        Task Type
+                    </Typography>
+                    <RadioGroup
+                        row
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        value={task.type}
+                        name="type"
+                        onChange={handleChange}
+                    >
+                        <FormControlLabel
+                            value="Memorization"
+                            control={<Radio />}
+                            label="Memorization"
+
+                        />
+                        <FormControlLabel
+                            value="Revision"
+                            control={<Radio />}
+                            label="Revision"
+                        />
+                    </RadioGroup>
+                </Stack>
                 <Button
                     type="submit"
                     variant="contained"
-                    sx={{ mt: 3, mb: 2, marginLeft: "340px", width: "300px", marginY:"40px", backgroundColor: "#254e58" }}
+                    sx={{ mt: 3, mb: 2, marginLeft: "340px", width: "300px", marginY: "40px", backgroundColor: "#254e58" }}
                     onClick={handleSubmit}
                 >
                     Add Task
                 </Button>
-                <hr style={{border: "1px lightgray rounded", width: "850px", marginBottom:"50px"}}></hr>
+                <hr style={{ border: "1px lightgray rounded", width: "850px", marginBottom: "50px" }}></hr>
             </Box>
         </div>
     );
