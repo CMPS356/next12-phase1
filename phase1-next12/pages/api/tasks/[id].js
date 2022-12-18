@@ -1,7 +1,14 @@
-import { deleteMessage, getMessageById, updateMessage } from '../../../repo/messages-repo';
+import { getTasksById, updateTask, deleteTask } from "../../../repo/tasks-repo"
+
+// AddTask(task) - Teacher
+// GetTaskOfTeacherStudents(teacherId) - Teacher
+// DeleteTask(taskId) - Teacher
+// UpdateTask(taskId, task) - Teacher
+
+// GetTasks() - Coordinator
+// GetTasksOfParentsChildren(parentId) - Parent
 
 export default function handler(req, res) {
-
   switch (req.method) {
     case "GET":
       return getById();
@@ -14,13 +21,13 @@ export default function handler(req, res) {
   }
 
   function getById() {
-    const message = getMessageById(req.query.id);
-    return res.status(200).json(message);
+    const user = getStudentById(req.query.id);
+    return res.status(200).json(user);
   }
 
   function update() {
     try {
-      updateMessage(req.query.id, req.body);
+      updateTask(req.query.id, req.body);
       return res.status(200).json({ message: 'Updated Successfully!' });
     } catch (error) {
       return res.status(400).json({ message: error });
@@ -28,7 +35,7 @@ export default function handler(req, res) {
   }
 
   function remove() {
-    deleteMessage(req.query.id);
+    deleteTask(req.query.id);
     return res.status(200).json({ message: 'Deleted Successfully!' });
   }
 }

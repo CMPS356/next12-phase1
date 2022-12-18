@@ -449,7 +449,7 @@ const Register = () => {
                 size="small"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={student.teacherId}
+                  value={student.studentId}
                   name="teacherId"
                   onChange={handleStudentChange}
                   sx={{ marginTop: "10px", width: "278px" }}
