@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1e416c38-d431-4ff7-b7b2-3218b0a87700",
+        "text": "Qatar is blessed by many Quran classes for kids. You are requested to design and implement a HalaqaMetrash Web App to allow parents to follow-up the progress of their kids and help teachers engage parents and easily communicate with them. The key use cases to deliver are shown in Figure 1.",
+        "date": "Mon Dec 12 2022 - 5:38:37 PM"
+    },
+    {
+        "id": "dc25dc83-ec97-490e-bf5e-49bc477101f2",
+        "text": "Add Student: The Coordinator, responsible of managing all Halaqat, can add a student. The student registration details should include the parent details: first name and last name, Qatari Id, Mobile, Email, and Password. A parent can register 1 or many children. A child details include: First name, Last name, Date of Birth, Gender, and School Grade. Note that if a parent has many registered children then they should only have 1 login account and upon login they should be able get the tasks and messages for their registered children (as explained below).",
+        "date": "Mon Dec 12 2022 - 5:39:26 PM"
+    },
+    {
+        "id": "76510f08-72e9-4927-bb1c-2804b4ac7e5c",
+        "text": "Get Students: the coordinator can get the list of registered students. As an extension to this use case, the coordinator can also update the student details or change the student’s enrolment status to inactive.",
+        "date": "Mon Dec 12 2022 - 5:39:40 PM"
+    },
+    {
+        "id": "f6a1f012-f5a9-48f4-bff8-112d35b67d31",
+        "text": "Add Task allows the teacher to assign a memorization or a revision task to a student in their Halaqa to keep track of their progress of memorizing new Ayats or revising previously learned ones. First the teacher selects the student to assign the task to, then selects the Sura, the Aya range, the due date (by default this should be set to Today’s date + 1) and the type of task (Memorization or Revision). The Sura list and possible Aya range should be provided to the user to avoid typing them. The list of Quran Surahs is provided to you.",
+        "date": "Mon Dec 12 2022 - 5:39:54 PM"
+    },
+    {
+        "id": "43696559-f744-4d73-8088-ee436ee88a9f",
+        "text": "Get Tasksfor a particular student by status either completed, pending or all tasks. The parent can only get the tasks for their children, the teacher can get the tasks for a student in their Halaqa while the coordinator can get the tasks for any student.",
+        "date": "Mon Dec 12 2022 - 5:40:53 PM"
+    }
+]

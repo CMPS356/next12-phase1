@@ -1,0 +1,138 @@
+[
+    {
+        "id": "6559589e-c36e-434e-b1ca-def1b9463b72",
+        "parent": {
+            "qatariId": "92749382353",
+            "firstName": "Mohammed",
+            "lastName": "Al Marri",
+            "mobile": "+97470262671",
+            "email": "Mohammed304@hotmail.com",
+            "username": "",
+            "password": "password"
+        },
+        "students": [
+            {
+                "studentId": 1,
+                "firstName": "Maha",
+                "lastName": "Al Marri",
+                "dob": "10/09/2008",
+                "gender": "F",
+                "schoolGrade": 0,
+                "teacherId": 501,
+                "isActive": "true"
+            },
+            {
+                "studentId": 2,
+                "firstName": "Aisha",
+                "lastName": "Al Marri",
+                "dob": "06/10/2007",
+                "gender": "F",
+                "schoolGrade": "3",
+                "teacherId": 501,
+                "isActive": "false"
+            }
+        ]
+    },
+    {
+        "id": "6559589e-c36e-434e-b1ca-def1b9463b73",
+        "parent": {
+            "qatariId": 34,
+            "firstName": "Abbas",
+            "lastName": "Ibn Firnas",
+            "mobile": "9999-888",
+            "email": "abbas@test.com",
+            "username": "abbas",
+            "password": "password"
+        },
+        "students": [
+            {
+                "studentId": 3,
+                "firstName": "Ibn Abbas",
+                "lastName": "Ibn Firnas",
+                "dob": "1/2/2008",
+                "gender": "M",
+                "schoolGrade": 5,
+                "teacherId": 501,
+                "isActive": "false"
+            },
+            {
+                "studentId": 4,
+                "firstName": "Bint Abbas",
+                "lastName": "Ibn Firnas",
+                "dob": "1/3/2012",
+                "gender": "F",
+                "schoolGrade": 2,
+                "teacherId": 502,
+                "isActive": "true"
+            }
+        ]
+    },
+    {
+        "id": "6559589e-c36e-434e-b1ca-def1b9463b77",
+        "parent": {
+            "qatariId": 56,
+            "firstName": "Samira",
+            "lastName": "Saghir",
+            "mobile": "9999-888",
+            "email": "samira@test.com",
+            "username": "samira",
+            "password": "password"
+        },
+        "students": [
+            {
+                "studentId": 5,
+                "firstName": "Ibn Samira",
+                "lastName": "Saghir",
+                "dob": "1/2/2007",
+                "gender": "M",
+                "schoolGrade": 6,
+                "teacherId": 501,
+                "isActive": "false"
+            },
+            {
+                "studentId": 6,
+                "firstName": "Bint Samira",
+                "lastName": "Saghir",
+                "dob": "1/3/2010",
+                "gender": "F",
+                "schoolGrade": 3,
+                "teacherId": 502,
+                "isActive": "true"
+            }
+        ]
+    },
+    {
+        "id": "6559589e-c36e-434e-b1ca-def1b9463b78",
+        "parent": {
+            "qatariId": 12,
+            "firstName": "Juha",
+            "lastName": "Dahak",
+            "mobile": "7777-888",
+            "email": "juha@test.com",
+            "username": "juha",
+            "password": "password"
+        },
+        "students": [
+            {
+                "studentId": 7,
+                "firstName": "Ibn Juha",
+                "lastName": "Dahak",
+                "dob": "1/1/2009",
+                "gender": "M",
+                "schoolGrade": 4,
+                "teacherId": 501,
+                "isActive": "false"
+            },
+            {
+                "studentId": 8,
+                "firstName": "Bint Juha",
+                "lastName": "Dahak",
+                "dob": "1/5/2011",
+                "gender": "F",
+                "schoolGrade": 2,
+                "teacherId": 502,
+                "isActive": "true"
+            }
+        ]
+    }
+]
