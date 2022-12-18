@@ -11,6 +11,7 @@ import { Stack } from '@mui/system';
 import { MenuItem } from '@mui/material';
 import Select from '@mui/material/Select';
 import Box from "@mui/material/Box";
+import Button from '@mui/material/Button';
 import List from "@mui/material/List";
 import CommentIcon from '@mui/icons-material/Comment';
 import ListItem from "@mui/material/ListItem";
@@ -41,7 +42,12 @@ export default function TasksViewer() {
         const [selectedStatus, setSelectedStatus] = useState('all')
     
         useEffect(()=>{
-            setStudents(studentsList.filter(s => s.studentId == selectedName))
+            if(selectedName=='-'){
+                setStudents(studentsList)
+                setSelectedStatus('all')
+            }else{
+                setStudents(studentsList.filter(s => s.studentId == selectedName))
+            }
         },[selectedName])
     
         useEffect(()=>{
@@ -54,7 +60,7 @@ export default function TasksViewer() {
         },[selectedStatus])
 
         return (
-            <Box sx={{ flexGrow: 1, maxWidth: 752, marginTop: "20px" }}>
+            <Box sx={{ flexGrow: 1,  marginTop: "20px" }}>
                 <Stack flexDirection="row" sx={{ marginBottom: "20px" }}>
                     <Typography
                         sx={{
@@ -72,7 +78,7 @@ export default function TasksViewer() {
                         value={selectedName}
                         onChange={e => setSelectedName(e.target.value)}
                         name="selectedName"
-                        sx={{ marginTop: "10px", width: "278px" }}
+                        sx={{ marginTop: "10px", width: "250px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
                         {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
@@ -94,15 +100,17 @@ export default function TasksViewer() {
                         value={selectedStatus}
                         onChange={e => setSelectedStatus(e.target.value)}
                         name="selectedStatus"
-                        sx={{ marginTop: "10px", width: "278px" }}
+                        sx={{ marginTop: "10px", width: "200px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
                         {['completed', 'pending', 'all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                     </Select>
+                    <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+
                 </Stack>
                 {/* {JSON.stringify(students)} */}
                 <Grid item xs={12} md={6}>
-                    <Box sx={{ flexGrow: 1, width: "1000px", height: "500px", overflow: "auto" }}>
+                    <Box sx={{ flexGrow: 1, width: "1000px", height: "1000px", overflow: "auto" }}>
                         <List sx={{ marginLeft: '20px', height: "90px" }}>
                             {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                                 <>
@@ -137,7 +145,12 @@ export default function TasksViewer() {
         const [selectedStatus, setSelectedStatus] = useState('all')
     
         useEffect(()=>{
-            setStudents(studentsList.filter(s => s.studentId == selectedName))
+            if(selectedName=='-'){
+                setStudents(studentsList)
+                setSelectedStatus('all')
+            }else{
+                setStudents(studentsList.filter(s => s.studentId == selectedName))
+            }
         },[selectedName])
     
         useEffect(()=>{
@@ -150,7 +163,7 @@ export default function TasksViewer() {
         },[selectedStatus])
 
         return (
-            <Box sx={{ flexGrow: 1, maxWidth: 752, marginTop: "20px" }}>
+            <Box sx={{ flexGrow: 1, marginTop: "20px" }}>
                 <Stack flexDirection="row" sx={{ marginBottom: "20px" }}>
                     <Typography
                         sx={{
@@ -168,7 +181,7 @@ export default function TasksViewer() {
                         value={selectedName}
                         onChange={e => setSelectedName(e.target.value)}
                         name="selectedName"
-                        sx={{ marginTop: "10px", width: "278px" }}
+                        sx={{ marginTop: "10px", width: "250px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
                         {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
@@ -190,11 +203,13 @@ export default function TasksViewer() {
                         value={selectedStatus}
                         onChange={e => setSelectedStatus(e.target.value)}
                         name="selectedStatus"
-                        sx={{ marginTop: "10px", width: "278px" }}
+                        sx={{ marginTop: "10px", width: "200px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
                         {['completed', 'pending', 'all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                     </Select>
+                    <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+
                 </Stack>
                 {/* {JSON.stringify(students)} */}
                 <Grid item xs={12} md={6}>

@@ -1,17 +1,13 @@
 import { Dialog, DialogTitle, TextField, Typography, Button, RadioGroup, Radio} from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-
 import {
-    Box,
     FormControlLabel,
     MenuItem,
     Select
 } from "@mui/material";
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Stack } from "@mui/system";
-const parent_student = require('../../data/parent-student.json')
 const _surahs = require('../../data/surah.json')
-import { useLoginStore } from "../../stores/loginStore";
 import { taskService } from "../../services/tasks-service";
 
 const styleBlock = {
@@ -65,14 +61,14 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
     };
   
     return (
-      <Dialog onClose={handleClose} open={open} fullWidth>
+      <Dialog onClose={handleClose} open={open} >
         <DialogTitle sx={{marginLeft: "25px"}}>Update Task Information</DialogTitle>
         <hr style={{border: "1px lightgray rounded", width: "500px"}}></hr>
               {/* {JSON.stringify(task)} */}
 
                     <Stack
                         flexDirection="column"
-                        sx={{ width: "350px", alignItems: "center" , marginLeft: "100px"}}
+                        sx={{ width: "350px", alignItems: "center" , marginLeft: "80px"}}
                     >
                         <Stack flexDirection="row" sx={{ marginTop: "15px" }}>
                             <Typography
@@ -103,7 +99,7 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
 
                     <Stack
                         flexDirection="column"
-                        sx={{ width: "350px", alignItems: "center", marginLeft: "100px" }}
+                        sx={{ width: "350px", alignItems: "center", marginLeft: "80px" }}
                     >
                         <Stack
                             flexDirection="row"
@@ -146,17 +142,16 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
                             id="dueDate"
                             onChange={handleChange}
                         />
-
-                <Stack flexDirection="row" sx={{ marginTop: "30px", marginLeft:"60px", width: "300px"}}>
                         <Typography
                             sx={{
-                                marginTop: "10px",
-                                marginRight: "22px",
+                                marginTop: "20px",
+                                marginRight: "270px",
                                 color: "#3A3B3C"
                             }}
                         >
-                            Task Type
+                         Task Type:
                         </Typography>
+                <Stack flexDirection="row" sx={{ marginTop: "30px", marginLeft:"60px", width: "300px"}}>
                         <RadioGroup
                             row
                             aria-labelledby="demo-radio-buttons-group-label"
@@ -166,13 +161,13 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
                             onChange={handleChange}
                         >
                             <FormControlLabel
-                                value="memorization"
+                                value="Memorization"
                                 control={<Radio />}
                                 label="Memorization"
                                 
                             />
                             <FormControlLabel
-                                value="revision"
+                                value="Revision"
                                 control={<Radio />}
                                 label="Revision"
                             />
@@ -181,7 +176,7 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
                     <Button
                     type="submit"
                     variant="contained"
-                    sx={{ mt: 3, mb: 2, marginLeft: "40px", width: "500px", marginY:"40px", backgroundColor: "#254e58" }}
+                    sx={{ mt: 3, mb: 2, width: "300px", marginY:"40px", backgroundColor: "#254e58" }}
                     onClick={updateTask}
                 >
                     Add Task

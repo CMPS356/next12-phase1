@@ -3,14 +3,13 @@
         "taskId": 1,
         "studentId": 1,
         "surahId": 2,
-        "surahName": "Al-Baqara",
         "fromAya": 8,
         "toAya": 12,
         "type": "Memorization",
         "dueDate": "1/04/2016",
-        "completedDate": "Mon Dec 19 2022",
-        "masteryLevel": "Excellent",
-        "comment": "Excellent work"
+        "masteryLevel": "excellent",
+        "comment": "Bery good",
+        "completedDate": "Mon Dec 19 2022"
     },
     {
         "taskId": 2,
@@ -59,9 +58,9 @@
         "toAya": 16,
         "type": "Memorization",
         "dueDate": "1/04/2016",
-        "completedDate": "Mon Dec 19 2022",
         "masteryLevel": "Ok",
-        "comment": "Ok work"
+        "comment": "Ok work",
+        "completedDate": "Mon Dec 19 2022"
     },
     {
         "taskId": 6,
@@ -142,7 +141,7 @@
         "surahId": 10,
         "fromAya": 1,
         "toAya": 15,
-        "type": "memorization",
+        "type": "Memorization",
         "dueDate": "01/09/2010"
     }
 ]

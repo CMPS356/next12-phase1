@@ -44,7 +44,7 @@ const initialTaskState =
     surahId: -1,
     fromAya: 1,
     toAya: 1,
-    type: "",
+    type: "Memorization",
     dueDate: ""
 }
 
@@ -55,7 +55,7 @@ export default function AddTask() {
     const [students, setStudents] = useState(parent_student.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id))
 
     useEffect(() => {
-        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id });
+        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type:"Memorization"});
     }, []);
 
     const handleChange = (e) => {
@@ -218,13 +218,13 @@ export default function AddTask() {
                             onChange={handleChange}
                         >
                             <FormControlLabel
-                                value="memorization"
+                                value="Memorization"
                                 control={<Radio />}
                                 label="Memorization"
                                 
                             />
                             <FormControlLabel
-                                value="revision"
+                                value="Revision"
                                 control={<Radio />}
                                 label="Revision"
                             />

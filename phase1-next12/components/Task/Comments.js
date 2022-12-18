@@ -29,6 +29,12 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
             toAya: _task.toAya,
             type: _task.type,
             dueDate: _task.dueDate, //int
+            toAya: _task.toAya,
+            type: _task.type,
+            dueDate: _task.dueDate,
+            completedDate: `${new Date().toDateString().substring(4)}`,
+            masteryLevel: 'excellent',
+            comment: ""
         })
     }, [open])
 
@@ -37,21 +43,9 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
         handleClose()
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        taskService.create(task);
-
-        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id });
-    };
-
     const handleChange = (e) => {
         const name = e.target.name;
         let value = e.target.value;
-
-        if (name == "taskId" || name == "studentId" ||
-            name == "surahId" || name == "fromAya" ||
-            name == "toAya") value = parseInt(value);
 
         setTask({ ...task, [name]: value });
     };
@@ -63,10 +57,8 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
     return (
         <Dialog onClose={handleClose} open={open} fullWidth>
             <DialogTitle sx={{ marginLeft: "25px", marginTop: "10px" }}>Feedback to Student</DialogTitle>
-            <hr style={{ border: "1px lightgray rounded", width: "500px" }}></hr>
-            {JSON.stringify(task)}
-
-
+            <hr style={{ border: "1px lightgray rounded", width: "700px" }}></hr>
+            {/* {JSON.stringify(task)} */}
 
             <Stack
                 flexDirection="column"
@@ -77,10 +69,10 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
                     margin="normal"
                     fullWidth
                     required
-                    value={task.dueDate}
-                    name="dueDate"
+                    value={task.comment}
+                    name="comment"
                     label="Comments"
-                    id="dueDate"
+                    id="comment"
                     onChange={handleChange}
                 />
                 <TextField
@@ -88,10 +80,10 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
                     margin="normal"
                     fullWidth
                     required
-                    value={task.dueDate}
-                    name="dueDate"
+                    value={task.completedDate}
+                    name="completedDate"
                     label="Due Date"
-                    id="dueDate"
+                    id="completedDate"
                     onChange={handleChange}
                 />
                                 <Typography
@@ -108,16 +100,14 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
                     <RadioGroup
                         row
                         aria-labelledby="demo-radio-buttons-group-label"
-                        value={task.type}
-                        defaultValue={_task.type}
-                        name="type"
+                        value={task.masteryLevel}
+                        name="masteryLevel"
                         onChange={handleChange}
                     >
                         <FormControlLabel
                             value="excellent"
                             control={<Radio />}
                             label="Excellent"
-
                         />
                         <FormControlLabel
                             value="ok"
@@ -137,7 +127,7 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
                     sx={{ mt: 3, mb: 2, width: "390px", marginY: "40px", backgroundColor: "#254e58" }}
                     onClick={updateTask}
                 >
-                    Add Task
+                    SEND FEEDBACK
                 </Button>
             </Stack>
         </Dialog>

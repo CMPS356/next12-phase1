@@ -13,6 +13,7 @@ import { MenuItem } from '@mui/material';
 import Select from '@mui/material/Select';
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
+import Button from '@mui/material/Button';
 import CommentIcon from '@mui/icons-material/Comment';
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
@@ -46,7 +47,12 @@ export default function Tasks() {
     const [selectedValue2, setSelectedValue2] = useState("value")
 
     useEffect(()=>{
-        setStudents(studentsList.filter(s => s.studentId == selectedName))
+        if(selectedName=='-'){
+            setStudents(studentsList)
+            setSelectedStatus('all')
+        }else{
+            setStudents(studentsList.filter(s => s.studentId == selectedName))
+        }
     },[selectedName])
 
     useEffect(()=>{
@@ -60,7 +66,7 @@ export default function Tasks() {
     },[selectedStatus])
 
     const setCompleteDate = (task, value) => {
-        console.log(task, value)
+        console.log(value)
         if (value) {
             taskService.update(task.taskId, { ...task, completedDate: `${new Date().toDateString()}` })
         }
@@ -97,7 +103,7 @@ export default function Tasks() {
 
     if (userContext.role != 'teacher') return <></>
     return (
-        <Box sx={{ flexGrow: 1, maxWidth: 752, marginTop: "20px" }}>
+        <Box sx={{ flexGrow: 1, marginTop: "20px" }}>
             {/* {JSON.stringify(selectedName)} */}
             <Stack flexDirection="row" sx={{ marginBottom: "20px" }}>
                 <Typography
@@ -116,7 +122,7 @@ export default function Tasks() {
                     value={selectedName}
                     onChange={e => setSelectedName(e.target.value)}
                     name="selectedName"
-                    sx={{ marginTop: "10px", width: "278px" }}
+                    sx={{ marginTop: "10px", width: "250px" }}
                     inputProps={{ "aria-label": "Halaqa" }}
                 >
                     {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
@@ -138,11 +144,12 @@ export default function Tasks() {
                     value={selectedStatus}
                     onChange={e => setSelectedStatus(e.target.value)}
                     name="selectedStatus"
-                    sx={{ marginTop: "10px", width: "278px" }}
+                    sx={{ marginTop: "10px", width: "200px" }}
                     inputProps={{ "aria-label": "Halaqa" }}
                 >
                     {['completed','pending','all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </Select>
+                <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
             </Stack>
 
             <Grid item xs={12} md={6}>
@@ -151,12 +158,13 @@ export default function Tasks() {
                         {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                             <>
                                 <ListItem
-                                    sx={{ width: "900px", height: "70px" }}
+                                    sx={{ width: "900px", height: "70px", marginBottom:"12px" }}
                                     key={t.taskId}
                                     secondaryAction={
                                         <>
                                             <span>{t.completedDate ? "COMPLETED" : "PENDING"}</span>
                                             <IconButton
+                                                disabled={t.completedDate && true}
                                                 edge="end"
                                                 sx={{ marginLeft: "50px" }}
                                                 aria-label="delete"
@@ -165,6 +173,7 @@ export default function Tasks() {
                                                 <DeleteIcon />
                                             </IconButton>
                                             <IconButton
+                                            disabled={t.completedDate && true}
                                                 edge="end"
                                                 aria-label="delete"
                                                 sx={{ marginLeft: "50px" }}
@@ -173,23 +182,23 @@ export default function Tasks() {
                                                 <BorderColorIcon />
                                             </IconButton>
                                             <IconButton
+                                                disabled={t.completedDate && true}
                                                 edge="end"
                                                 aria-label="delete"
-                                                sx={{ marginLeft: "50px" }}
+                                                sx={{ marginLeft: "50px"}}
                                                 onClick={() => handleClickOpen2(t)}
                                             >
-                                                < CommentIcon sx={{ color: "gray" }} />
+                                                < CommentIcon  />
                                             </IconButton>
                                         </>
                                     }
                                 >
-                                    <ListItemAvatar>
-
                                         <TaskToggle setCompleteDate={(v) => setCompleteDate(t, v)} val={t.completedDate ?? false} />
-
-                                    </ListItemAvatar>
-                                    <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} />
+                                    <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
+                                    secondary={`Aya: ${t.fromAya} - ${t.toAya} \u00A0\u00A0\u00A0 Due: ${t.dueDate}`}/>
+                                    
                                 </ListItem>
+
                             </>
                         )}
                     </List>
