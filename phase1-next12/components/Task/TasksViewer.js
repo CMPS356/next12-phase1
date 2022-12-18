@@ -110,14 +110,14 @@ export default function TasksViewer() {
                 </Stack>
                 {/* {JSON.stringify(students)} */}
                 <Grid item xs={12} md={6}>
-                    <Box sx={{ flexGrow: 1, width: "1000px", height: "1000px", overflow: "auto" }}>
+                    <Box sx={{ flexGrow: 1, width: "1000px", height: "900px", overflow: "auto" }}>
                         <List sx={{ marginLeft: '20px', height: "90px" }}>
                             {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                                 <>
                                     <div style={{ justifyContent: "end", width: "815px" }}>
                                     </div>
                                     <ListItem
-                                        sx={{ width: "900px", height: "70px" }}
+                                        sx={{ width: "900px", height: "70px", marginBottom: "12px" }}
                                         key={t.taskId}
                                     >
                                         <ListItemAvatar>
@@ -125,7 +125,7 @@ export default function TasksViewer() {
                                                 <AssignmentIcon />
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} />
+                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
                                         <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
                                         <span>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
@@ -217,7 +217,7 @@ export default function TasksViewer() {
                         <List sx={{ marginLeft: '20px', height: "90px" }}>
                             {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                                 <>
-                                    <div style={{ justifyContent: "end", width: "815px" }}>
+                                    <div style={{ justifyContent: "end", width: "815px", marginBottom: "12px" }}>
                                     </div>
                                     <ListItem
                                         sx={{ width: "900px", height: "70px" }}
@@ -228,7 +228,8 @@ export default function TasksViewer() {
                                                 <AssignmentIcon />
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} />
+                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
+                                        secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
                                         <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
                                         <span>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
