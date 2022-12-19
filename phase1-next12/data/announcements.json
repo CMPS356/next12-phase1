@@ -1,10 +1,5 @@
 [
     {
-        "id": "1e416c38-d431-4ff7-b7b2-3218b0a87700",
-        "text": "Qatar is blessed by many Quran classes for kids. You are requested to design and implement a HalaqaMetrash Web App to allow parents to follow-up the progress of their kids and help teachers engage parents and easily communicate with them. The key use cases to deliver are shown in Figure 1.",
-        "date": "Mon Dec 12 2022 - 5:38:37 PM"
-    },
-    {
         "id": "dc25dc83-ec97-490e-bf5e-49bc477101f2",
         "text": "Add Student: The Coordinator, responsible of managing all Halaqat, can add a student. The student registration details should include the parent details: first name and last name, Qatari Id, Mobile, Email, and Password. A parent can register 1 or many children. A child details include: First name, Last name, Date of Birth, Gender, and School Grade. Note that if a parent has many registered children then they should only have 1 login account and upon login they should be able get the tasks and messages for their registered children (as explained below).",
         "date": "Mon Dec 12 2022 - 5:39:26 PM"

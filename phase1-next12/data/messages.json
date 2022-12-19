@@ -1,9 +1,51 @@
 [
     {
-      "id": "1",
-      "senderID": "501",
-      "recepientID": "1",
-      "text": "Great job today!",
-      "date": "Mon Dec 12 2022 - 5:39:26 PM"
+        "id": "1",
+        "senderID": "501",
+        "recepientID": "1",
+        "text": "Great job today! ",
+        "date": "Mon Dec 12 2022 - 5:39:26 PM"
+    },
+    {
+        "id": "2",
+        "senderID": "501",
+        "recepientID": "2",
+        "text": "Hello",
+        "date": "Mon Dec 12 2022 - 5:39:26 PM"
+    },
+    {
+        "id": "2",
+        "senderID": "501",
+        "recepientID": "2",
+        "text": "How are you?",
+        "date": "Mon Dec 12 2022 - 5:39:26 PM"
+    },
+    {
+        "id": "2",
+        "senderID": "501",
+        "recepientID": "2",
+        "text": "Check your new tasks :)",
+        "date": "Mon Dec 12 2022 - 5:39:26 PM"
+    },
+    {
+        "id": "9f75d45d-841e-426a-8765-372da4a5a8cf",
+        "text": "Check your new tasks!",
+        "senderID": 501,
+        "recepientID": 7,
+        "date": "Mon Dec 19 2022 - 12:08:28 AM"
+    },
+    {
+        "id": "0a1153e6-1380-4c84-bbe7-7314abff9eb1",
+        "text": "Check your tasks today :)!!!",
+        "senderID": 501,
+        "recepientID": 5,
+        "date": "Mon Dec 19 2022 - 1:26:25 AM"
+    },
+    {
+        "id": "1b8ad8e4-c01e-4a2d-8de4-ed844b0ccc1c",
+        "text": "Check your tasks today :)",
+        "senderID": 501,
+        "recepientID": 1,
+        "date": "Mon Dec 19 2022 - 1:42:19 AM"
     }
 ]

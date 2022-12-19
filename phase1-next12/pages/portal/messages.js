@@ -1,5 +1,5 @@
 
-const announcements = require("../../data/announcements.json");
+const _messages = require("../../data/messages.json");
 import { useEffect, useState } from "react";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
@@ -23,8 +23,10 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
-import { announcementService } from "../../services/announcements-service";
+import ChatIcon from '@mui/icons-material/Chat';
 import { useLoginStore } from "../../stores/loginStore";
+import UpdateMessage from "../../components/Message/UpdateMessage";
+import { messageService } from "../../services/messages-service";
 const parents_students = require("../../data/parent-student.json");
 const _staff = require("../../data/staff.json");
 
@@ -37,40 +39,59 @@ export default function Page() {
 
     const [open, setOpen] = useState(false)
     const [selectedValue, setSelectedValue] = useState("value")
-    const [announcement, setAnnouncement] = useState("")
-    const [student, setStudent] = useState([])
-    const [parent, setParent] = useState([])
-
-    let students;
-
-
-    useEffect(() => {
-
-        const parentStudent = parents_students.find((p) => p.parent?.id == userContext.id)
-
-
+    const [message, setMessage] = useState({})
+    const [updateMessage, setUpdateMessage] = useState({})
+    const [students, setStudents] = useState([])
+    const [student, setStudent] = useState(null)
+    const [messages, setMessages] = useState([])
+    function getStudents() {
         if (userContext.role == "parent") {
-            console.log(parents_students.find((ps) => ps.id == userContext.id))
-        } else {
-            students = parents_students.map((ps) => {
-                ps.students?.map((s) => s.teacherId == userContext.id)
-            })
+            const parent = parents_students?.find((ps) =>
+                ps.id == userContext.id
+            )
+            // console.log(parent.students)
+            setStudents(parent.students)
+            // return parent.students
+            console.log(students)
+
+        } else if (userContext.role == "coordinator") {
+            setStudents(parents_students.flatMap(p => p.students))
+        }
+        else {
+            setStudents(
+                parents_students.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id)
+
+            )
         }
 
 
-        console.log(parentStudent)
+    }
+
+    useEffect(() => {
+        getStudents()
+
     }, [userContext]);
 
-    
+    // useEffect(() => {
+    //     getStudents()
+    //     console.log(student)
+
+    // }, [students]);
+
     useEffect(() => {
-
-        
-        console.log(parent)
-    }, [parent]);
+        // setMessages(_messages.filter((m) => m.recepientID == student?.studentId))
 
 
-    const handleClickOpen = (a) => {
-        setAnnouncement(a)
+    }, [student]);
+
+    const handleClick = (s) => {
+        setStudent(s)
+        console.log(s)
+        console.log(messages)
+
+    }
+    const handleClickOpen = (m) => {
+        setUpdateMessage(m)
         setOpen(true);
     };
 
@@ -79,73 +100,91 @@ export default function Page() {
         setSelectedValue(value)
     };
 
-    const handleDelete = (announcement) => {
-        console.log(announcement)
-        announcementService.removeAnnouncement(announcement.id)
-
+    const handleDelete = (message) => {
+        console.log(message.id)
+        messageService.removeMessage(message.id)
     };
 
-    const handleAnnouncementChange = (e) => {
+    const handleMessageChange = (e) => {
         const text = e.target.value;
-        const newAnnouncement = { text: text }
-        setAnnouncement(newAnnouncement);
+        const newMessage = { text: text, senderID: userContext.id, recepientID: student?.studentId }
+        setMessage(newMessage);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // setAnnouncement({...announcement, date: Date.now})
-        announcement.date = `${new Date().toDateString()} - ${new Date().toLocaleTimeString()}`
-        announcementService.create(announcement);
-        console.log({ announcement })
-        announcement.text = ""
-        setAnnouncement(announcement)
-        console.log(userContext.role)
+        message.date = `${new Date().toDateString()} - ${new Date().toLocaleTimeString()}`
+        messageService.create(message);
+        console.log({ message })
+        message.text = ""
+        setMessage(message)
     };
 
     return (
         <>
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", marginBottom: "0px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
+                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
             >
                 Messages
             </Typography>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-helper-label">Student</InputLabel>
-                <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={student}
-                    label="Age"
-                    onChange={/ TODO /}
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <Box sx={{ flexGrow: 1, width: "100%", height: "80%", overflow: "auto" }}>
+            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
 
                 <Demo>
 
-                    {/* <List sx={{ height: "100%", width: "80%" }}>
-                        {announcements.map((s, i) =>
+                    <List sx={{ height: "10%", width: "50%" }}>
+                        {students?.map((s, i) =>
                             <>
 
                                 <ListItem
-                                    sx={{ width: "100%", height: "100%" }}
+                                    sx={{ width: "550px", height: "100%" }}
                                     key={s}
                                     secondaryAction={
-                                        userContext.role == "coordinator" ?
+
+                                        <>
+                                            <IconButton
+                                                edge="end"
+                                                aria-label="student"
+                                                onClick={() => handleClick(s)}
+                                            >
+                                                <ChatIcon />
+                                            </IconButton>
+                                        </>
+                                    }
+                                >
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <PersonIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText sx={{ height: "100%", width: "100%", marginRight: "100px" }} primary={s.studentId} secondary={s.firstName + " " + s.lastName} />
+                                </ListItem>
+                            </>
+                        )}
+                    </List>
+                </Demo>
+
+            </Box>
+            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
+                <h2 sx={{ display: student && "none" }}>Chat with {student?.firstName} {student?.lastName}</h2>
+                <Demo>
+
+                    <List sx={{ height: "50%", width: "50%" }}>
+                        {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
+                            <>
+                                <div style={{ justifyContent: "end", width: "815px" }}>
+                                </div>
+                                <ListItem
+                                    sx={{ width: "550px", height: "70px" }}
+                                    key={m.id}
+                                    secondaryAction={
+                                        userContext.role == "teacher" ?
                                             <>
                                                 <IconButton
                                                     edge="end"
                                                     aria-label="delete"
-                                                    onClick={() => handleDelete(s)}
+                                                    onClick={() => handleDelete(m)}
                                                 >
                                                     <DeleteIcon />
                                                 </IconButton>
@@ -154,52 +193,57 @@ export default function Page() {
                                                     edge="end"
                                                     aria-label="update"
                                                     sx={{ marginLeft: "50px" }}
-                                                    onClick={() => handleClickOpen(s)}
+                                                    onClick={() => handleClickOpen(m)}
                                                 >
                                                     <BorderColorIcon />
                                                 </IconButton>
                                             </>
                                             :
                                             null
-
                                     }
                                 >
-                                    <ListItemAvatar>
-                                        <Avatar>
-                                            <PersonIcon />
-                                        </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText sx={{ height: "100%", width: "100%", marginRight: "100px" }} primary={s.text} secondary={s.date} />
+
+                                    <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
                                 </ListItem>
                             </>
                         )}
-                    </List> */}
+
+                    </List>
                 </Demo>
 
+
+
             </Box>
-            {/* <TextField
+
+            <TextField
                 size="large"
                 sx={{
-                    width: "60%", mt: 3, mb: 2, display: userContext.role !== "coordinator" && "none"
+                    width: "60%", mt: 3, mb: 2, display: userContext.role !== "teacher" && "none"
                 }}
                 margin="normal"
                 fullWidth
-                value={announcement.text}
-                label="Announcement"
-                id="announcement"
-                onChange={handleAnnouncementChange}
+                value={message.text}
+                label="Message"
+                id="message"
+                onChange={handleMessageChange}
             />
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2, marginLeft: "70px", width: "30%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "coordinator" && "none" }}
+                sx={{ mt: 3, mb: 2, marginLeft: "70px", width: "30%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "teacher" && "none" }}
                 onClick={handleSubmit}
 
             >
-                Send New Announcement
-            </Button> */}
-
+                Send Message
+            </Button>
+            <UpdateMessage
+            open={open}
+            message={updateMessage}
+            selectedValue={selectedValue}
+            onClose={handleClose}
+            />
         </>
+
 
     );
 }

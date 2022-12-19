@@ -20,6 +20,7 @@ import { TextField } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import { announcementService } from "../../services/announcements-service";
 import { useLoginStore } from "../../stores/loginStore";
+import UpdateAnnouncement from "../../components/Announcement/UpdateAnnouncement";
 
 const Demo = styled("div")(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
@@ -31,10 +32,11 @@ export default function Page() {
     const [open, setOpen] = useState(false)
     const [selectedValue, setSelectedValue] = useState("value")
     const [announcement, setAnnouncement] = useState("")
+    const [updateAnnouncement, setUpdateAnnouncement] = useState({})
 
 
     const handleClickOpen = (a) => {
-        setAnnouncement(a)
+        setUpdateAnnouncement(a)
         setOpen(true);
     };
 
@@ -145,7 +147,12 @@ export default function Page() {
             >
                 Send New Announcement
             </Button>
-
+            <UpdateAnnouncement
+             open={open}
+             announcement={updateAnnouncement}
+             selectedValue={selectedValue}
+             onClose={handleClose}
+            />
         </>
 
     );
