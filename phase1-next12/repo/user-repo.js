@@ -29,6 +29,9 @@ export function deleteStudents(studentId){
     const studentIndex = _students[index].students.findIndex(s => s.studentId == studentId)
 
     _students[index].students.splice(studentIndex,1)
+    
+    if(_students[index].students.length==0)
+    _students.splice(index,1)
     saveData()
 }
 

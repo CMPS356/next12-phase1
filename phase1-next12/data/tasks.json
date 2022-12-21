@@ -59,6 +59,7 @@
         "toAya": 16,
         "type": "Memorization",
         "dueDate": "1/04/2016",
+        "completedDate": "2/04/2016",
         "masteryLevel": "Ok",
         "comment": "Ok work"
     },
@@ -143,14 +144,5 @@
         "toAya": 4,
         "type": "Revision",
         "dueDate": "Dec 22 2022"
-    },
-    {
-        "taskId": "a9dc2ff2-e47a-40a3-9d9f-0238c8e0ff4e",
-        "studentId": 1,
-        "surahId": 8,
-        "fromAya": 1,
-        "toAya": 4,
-        "type": "Revision",
-        "dueDate": "May 22 2022"
     }
 ]

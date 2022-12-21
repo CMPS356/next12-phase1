@@ -8,6 +8,7 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
+import Alert from '@mui/material/Alert';
 import { Stack } from "@mui/system";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -67,6 +68,7 @@ const Register = () => {
   const [parent, setParent] = useState(initialParentState);
   const [errors, setErrors] = useState(initialError);
   const [firstHalaqa, setFirstHalaqa] = useState(staff.find(s => !s.isCoordinator).staffNo)
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setStudent({ ...student, teacherId: firstHalaqa});
@@ -107,10 +109,23 @@ const Register = () => {
 
     studentService.create({ parent, students: [...students, student] });
 
+    setSuccess(true)
+
     setStudents([]);
     setParent(initialParentState);
     setStudent({...initialStudentState, teacherId: firstHalaqa});
   };
+
+  useEffect(()=>{
+    const timeout = setTimeout(() => {
+        setSuccess(false)
+      }, 4000);
+
+    return () => {
+        clearTimeout(timeout);
+      };
+   },[success])
+
 
   return (
     <>
@@ -482,6 +497,7 @@ const Register = () => {
           >
             Register
           </Button>
+          <Alert severity="success" sx={{display: !success && 'none' , marginLeft: "100px"}}>Successfully Registerd Student!</Alert>
         </Box>
       </Box>
       {/* <div>{JSON.stringify(parent)}</div>

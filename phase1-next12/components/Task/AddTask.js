@@ -14,6 +14,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Stack } from "@mui/system";
 const parent_student = require('../../data/parent-student.json')
 const _surahs = require('../../data/surah.json')
+import Alert from '@mui/material/Alert';
 import { useLoginStore } from "../../stores/loginStore";
 import { taskService } from "../../services/tasks-service";
 
@@ -60,7 +61,11 @@ export default function AddTask() {
     const userContext = useLoginStore(state => state.userContext)
     if (userContext.role != 'teacher') return <></>
     const [task, setTask] = useState(initialTaskState);
+    const [success, setSuccess] = useState(false);
+    const [visible, setVisible] = useState(false);
     const [students, setStudents] = useState(parent_student.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id))
+
+
 
     useEffect(() => {
         setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type: "Memorization", dueDate: `${tomorrowsDate().toDateString().substring(4)}` });
@@ -77,13 +82,25 @@ export default function AddTask() {
         setTask({ ...task, [name]: value });
     };
 
+    useEffect(()=>{setTask(prevTask => ({ ...prevTask, toAya: _surahs.find(s => s.id == task.surahId)?.ayaCount}));  },[task.surahId])
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         taskService.create(task);
-
+        setSuccess(true)
         setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id });
     };
+
+    useEffect(()=>{
+        const timeout = setTimeout(() => {
+            setSuccess(false)
+          }, 3000);
+
+        return () => {
+            clearTimeout(timeout);
+          };
+    },[success])
 
     return (
         <div style={{ marginBottom: "10px" }}>
@@ -147,7 +164,7 @@ export default function AddTask() {
                                 sx={{ marginTop: "10px", width: "278px" }}
                                 inputProps={{ "aria-label": "Halaqa" }}
                             >
-                                {_surahs.map(s => <MenuItem key={s.id} value={s.id}>{s.englishName}</MenuItem>)}
+                                {_surahs.map(s => <MenuItem key={s.id} value={s.id}>{s.englishName} {`(${s.ayaCount})`}</MenuItem>)}
                             </Select>
                         </Stack>
 
@@ -246,6 +263,7 @@ export default function AddTask() {
                 >
                     Add Task
                 </Button>
+                <Alert severity="success" sx={{display: !success && 'none' }}>Successfully Added Task!</Alert>
                 <hr style={{ border: "1px lightgray rounded", width: "850px", marginBottom: "50px" }}></hr>
             </Box>
         </div>

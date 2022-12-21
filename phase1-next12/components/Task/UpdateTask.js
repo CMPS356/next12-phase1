@@ -38,14 +38,6 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
       handleClose()
     }
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-
-      taskService.create(task);
-
-      setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id });
-  };
-
     const handleChange = (e) => {
       const name = e.target.name;
       let value = e.target.value;
@@ -85,7 +77,7 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
                                 size="small"
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={task.surahId}
+                                value={task.surahId || _task.surahId}
                                 name="surahId"
                                 onChange={handleChange}
                                 sx={{ marginTop: "10px", width: "278px" }}
