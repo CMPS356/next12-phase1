@@ -125,8 +125,9 @@ export default function TasksViewer() {
                                             </Avatar>
                                         </ListItemAvatar>
                                         <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
-                                        <span>{`DUE: ${t.dueDate}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
                                 </>
                             )}
@@ -230,8 +231,9 @@ export default function TasksViewer() {
                                         </ListItemAvatar>
                                         <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
                                         secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
-                                        <span>{`DUE: ${t.dueDate}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
                                 </>
                             )}
