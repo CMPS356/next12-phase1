@@ -52,12 +52,12 @@ export default function Page() {
       <Grid item xs={12} md={6}>
         <Typography
           variant="h5"
-          sx={{ fontSize: "27px", marginBottom: "0px", fontFamily: "unset", textDecorationLine: "underline" }}
+          sx={{ fontSize: "27px", marginBottom: "30px", fontFamily: "unset", textDecorationLine: "underline" }}
         >
           Registerd Students List
         </Typography>
         <Demo>
-            <List sx={{ marginLeft: '100px', height: "90px" }}>
+            <List sx={{ marginLeft: '35px', height: "90px" }}>
               {parents_students.map((s,i) =>
                 s.students?.map((s,k) => (
                 <>

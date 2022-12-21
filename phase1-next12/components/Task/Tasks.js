@@ -124,7 +124,7 @@ export default function Tasks() {
                     sx={{ marginTop: "10px", width: "250px" }}
                     inputProps={{ "aria-label": "Halaqa" }}
                 >
-                    {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
+                       {[...studentsList,'-'].map(s => <MenuItem key={s.studentId  || '-'} value={s.studentId || '-'}>{`${s.lastName || ""}${s.lastName ?  "," : " "} ${s.firstName || '-'}`}</MenuItem>)}
                 </Select>
 
                 <Typography
@@ -148,11 +148,11 @@ export default function Tasks() {
                 >
                     {['completed','pending','all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </Select>
-                <Button onClick={()=>{setSelectedName('-');  setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+                <Button onClick={()=>{setSelectedName('-'); setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
             </Stack>
 
             <Grid item xs={12} md={6}>
-                <Box sx={{ flexGrow: 1, width: "1000px", height: "500px", overflow: "auto" }}>
+                <Box sx={{ flexGrow: 1, width: "1000px", height: "450px", overflow: "auto" }}>
                     <List sx={{ marginLeft: '20px', height: "90px", marginTop: "50px" }}>
                         {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                             <>

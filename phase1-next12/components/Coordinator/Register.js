@@ -134,7 +134,7 @@ const Register = () => {
           <HowToRegIcon fontSize="large" sx={{ marginRight: "5px" }} />
           <Typography
             variant="h5"
-            sx={{ fontSize: "27px", marginBottom: "30px", fontFamily: "unset" , textDecorationLine: "underline"}}
+            sx={{ fontSize: "27px", marginBottom: "80px", fontFamily: "unset" , textDecorationLine: "underline"}}
           >
             Registeration
           </Typography>
@@ -155,7 +155,7 @@ const Register = () => {
           >
             <Stack
               flexDirection="column"
-              sx={{ width: "350px", alignItems: "center", marginLeft: "100px" }}
+              sx={{ width: "350px", alignItems: "center", marginLeft: "50px" }}
             >
               <Typography component="h1" variant="h5" sx={{...styleBlock.margin,  textDecorationLine: "underline"}}>
                 Parent Information
@@ -492,12 +492,12 @@ const Register = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 3, mb: 2, marginLeft: "100px", width: "860px" , backgroundColor:"#254e58"}}
+            sx={{ mt: 3, mb: 2, marginLeft: "50px", width: "860px" , backgroundColor:"#254e58"}}
             onClick={handleSubmit}
           >
             Register
           </Button>
-          <Alert severity="success" sx={{display: !success && 'none' , marginLeft: "100px"}}>Successfully Registerd Student!</Alert>
+          <Alert severity="success" sx={{display: !success && 'none' , marginLeft: "50px"}}>Successfully Registerd Student!</Alert>
         </Box>
       </Box>
       {/* <div>{JSON.stringify(parent)}</div>
