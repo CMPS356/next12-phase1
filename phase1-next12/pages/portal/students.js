@@ -48,7 +48,7 @@ export default function Page() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
+    <Box sx={{ flexGrow: 1, width: "1000px", height: "80%", overflow: "auto" }}>
       <Grid item xs={12} md={6}>
         <Typography
           variant="h5"
@@ -61,8 +61,8 @@ export default function Page() {
               {parents_students.map((s,i) =>
                 s.students?.map((s,k) => (
                 <>
-                  <div style={{display: i==0 && k==0 ? 'flex' : 'none', justifyContent: "end",   width: "815px"}}>
-                  <h5 style={{display: i==0 && k==0 ? 'block' : 'none', }}>STATUS</h5>
+                  <div style={{display: i==0 && k==0 ? 'flex' : 'none', justifyContent: "end",   width: "825px"}}>
+                  <h5 style={{display: i==0 && k==0 ? 'block' : 'none', }}>ACTIVE?</h5>
                   </div>
                   <ListItem
                     sx={{ width: "850px", height: "70px" }}

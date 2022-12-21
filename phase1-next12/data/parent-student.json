@@ -19,7 +19,7 @@
                 "gender": "F",
                 "schoolGrade": 0,
                 "teacherId": 501,
-                "isActive": "true"
+                "isActive": "false"
             },
             {
                 "studentId": 2,
@@ -29,7 +29,7 @@
                 "gender": "F",
                 "schoolGrade": "3",
                 "teacherId": 501,
-                "isActive": "false"
+                "isActive": "true"
             }
         ]
     },
@@ -132,6 +132,29 @@
                 "schoolGrade": 2,
                 "teacherId": 502,
                 "isActive": "true"
+            }
+        ]
+    },
+    {
+        "id": "3a2dc491-3096-462c-b5c5-8a262291cd34",
+        "parent": {
+            "qatariId": 394850324,
+            "firstName": "Fathei",
+            "lastName": "Murad",
+            "mobile": 74859384,
+            "email": "fathei@hotmail.com",
+            "username": "Fa190",
+            "password": "password"
+        },
+        "students": [
+            {
+                "studentId": 293,
+                "firstName": "Karim",
+                "lastName": "Fathei",
+                "dob": "17/12/2001",
+                "gender": "M",
+                "schoolGrade": 3,
+                "teacherId": 501
             }
         ]
     }

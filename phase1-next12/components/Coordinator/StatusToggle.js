@@ -27,10 +27,10 @@ export default function StatusToggle({setStatus, toggle: tog}) {
             size='small'
         >
             <ToggleButton value="true" aria-label="left aligned">
-                <CheckIcon />
+                YES
             </ToggleButton>
             <ToggleButton value="false" aria-label="centered">
-                <CloseIcon />
+                NO
             </ToggleButton>
         </ToggleButtonGroup>
     );

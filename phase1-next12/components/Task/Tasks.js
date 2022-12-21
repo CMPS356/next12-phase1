@@ -49,7 +49,6 @@ export default function Tasks() {
     useEffect(()=>{
         if(selectedName=='-'){
             setStudents(studentsList)
-            setSelectedStatus('all')
         }else{
             setStudents(studentsList.filter(s => s.studentId == selectedName))
         }
@@ -149,7 +148,7 @@ export default function Tasks() {
                 >
                     {['completed','pending','all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </Select>
-                <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+                <Button onClick={()=>{setSelectedName('-');  setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
             </Stack>
 
             <Grid item xs={12} md={6}>
