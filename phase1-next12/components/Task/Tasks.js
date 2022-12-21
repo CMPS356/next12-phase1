@@ -68,7 +68,7 @@ export default function Tasks() {
     const setCompleteDate = (task, value) => {
         console.log(value)
         if (value) {
-            taskService.update(task.taskId, { ...task, completedDate: `${new Date().toDateString()}` })
+            taskService.update(task.taskId, { ...task, completedDate: `${task.completedDate ?? new Date().toDateString().substring(4)}` })
         }
         else {
             const updatedTask = task

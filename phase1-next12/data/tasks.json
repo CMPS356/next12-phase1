@@ -7,9 +7,8 @@
         "toAya": 12,
         "type": "Memorization",
         "dueDate": "1/04/2016",
-        "masteryLevel": "excellent",
-        "comment": "Bery good",
-        "completedDate": "Mon Dec 19 2022"
+        "masteryLevel": "poor",
+        "comment": "Not great :(("
     },
     {
         "taskId": 2,
@@ -20,7 +19,6 @@
         "toAya": 13,
         "type": "Revision",
         "dueDate": "1/04/2016",
-        "completedDate": "Mon Dec 19 2022",
         "masteryLevel": "Ok",
         "comment": "Ok work"
     },
@@ -34,7 +32,8 @@
         "type": "Memorization",
         "dueDate": "1/04/2016",
         "masteryLevel": "Poor",
-        "comment": "Poor work"
+        "comment": "Poor work",
+        "completedDate": "Dec 21 2022"
     },
     {
         "taskId": 4,
@@ -59,8 +58,7 @@
         "type": "Memorization",
         "dueDate": "1/04/2016",
         "masteryLevel": "Ok",
-        "comment": "Ok work",
-        "completedDate": "Mon Dec 19 2022"
+        "comment": "Ok work"
     },
     {
         "taskId": 6,
@@ -83,7 +81,8 @@
         "fromAya": 13,
         "toAya": 17,
         "type": "Memorization",
-        "dueDate": "3/04/2016"
+        "dueDate": "3/04/2016",
+        "completedDate": "Dec 21 2022"
     },
     {
         "taskId": 8,
@@ -103,7 +102,8 @@
         "fromAya": 15,
         "toAya": 19,
         "type": "Memorization",
-        "dueDate": "3/04/2016"
+        "dueDate": "3/04/2016",
+        "completedDate": "Dec 21 2022"
     },
     {
         "taskId": 10,

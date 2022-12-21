@@ -23,6 +23,7 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
 
     useEffect(() => {
       setTask({
+          taskId: _task.taskId,
           studentId: _task.studentId, //int
           surahId: _task.surahId,
           fromAya: _task.fromAya,
