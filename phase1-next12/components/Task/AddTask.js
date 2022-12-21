@@ -118,7 +118,7 @@ export default function AddTask() {
                 >
                     <Stack
                         flexDirection="column"
-                        sx={{ width: "3500px", alignItems: "center", marginLeft: "100px" }}
+                        sx={{ width: "3500px", alignItems: "center" }}
                     >
                         <Stack flexDirection="row" sx={{ marginTop: "15px" }}>
                             <Typography
@@ -263,7 +263,7 @@ export default function AddTask() {
                     Add Task
                 </Button>
                 <Alert severity="success" sx={{display: !success && 'none' }}>Successfully Added Task!</Alert>
-                <hr style={{ border: "1px lightgray rounded", width: "850px", marginBottom: "50px" }}></hr>
+                <hr style={{ border: "1px lightgray rounded", width: "900px", marginBottom: "20px", marginTop:"40px" }}></hr>
             </Box>
         </div>
     );

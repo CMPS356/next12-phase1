@@ -102,7 +102,7 @@ export default function Tasks() {
 
     if (userContext.role != 'teacher') return <></>
     return (
-        <Box sx={{ flexGrow: 1, marginTop: "20px" }}>
+        <Box sx={{ flexGrow: 1, marginTop: "70px" }}>
             {/* {JSON.stringify(selectedName)} */}
             <Stack flexDirection="row" sx={{ marginBottom: "20px" }}>
                 <Typography
@@ -153,7 +153,7 @@ export default function Tasks() {
 
             <Grid item xs={12} md={6}>
                 <Box sx={{ flexGrow: 1, width: "1000px", height: "450px", overflow: "auto" }}>
-                    <List sx={{ marginLeft: '20px', height: "90px", marginTop: "50px" }}>
+                    <List sx={{ height: "90px", marginTop: "50px" }}>
                         {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                             <>
                                 <ListItem
