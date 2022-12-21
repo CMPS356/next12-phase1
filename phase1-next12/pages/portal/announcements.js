@@ -71,17 +71,19 @@ export default function Page() {
 
     return (
         <>
+           <Box sx={{ padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px"}}>
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", marginBottom: "0px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
+                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none"}}
             >
-                Announcements
-            </Typography>
-            <Box sx={{ flexGrow: 1, width: "100%", height: "80%", overflow: "auto" }}>
+                &nbsp;Announcements
+            </Typography></Box>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
+            <Box sx={{ flexGrow: 1, width: "100%", height: "77%", overflow: "auto" }}>
 
                 <Demo>
 
-                    <List sx={{  height: "100%", width: "80%" }}>
+                    <List sx={{  height: "20%", width: "80%" }}>
                         {announcements.map((s, i) =>
                             <>
 
@@ -124,15 +126,15 @@ export default function Page() {
                         )}
                     </List>
                 </Demo>
+                <hr style={{ border: "1px lightgray rounded", width: "1000px", marginTop: "20px" }}></hr>
 
             </Box>
             <TextField
-                size="large"
                 sx={{
-                    width: "60%", mt: 3, mb: 2, display: userContext.role !== "coordinator" && "none" 
+                    width: "60%", display: userContext.role !== "coordinator" && "none" 
                 }}
-                margin="normal"
-                fullWidth
+                multiline
+                rows={4}
                 value={announcement.text}
                 label="Announcement"
                 id="announcement"
@@ -141,7 +143,7 @@ export default function Page() {
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2, marginLeft: "70px", width: "30%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "coordinator" && "none"  }}
+                sx={{marginTop:'30px',marginLeft: "70px", width: "30%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "coordinator" && "none"  }}
                 onClick={handleSubmit}
 
             >

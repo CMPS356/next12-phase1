@@ -62,7 +62,6 @@ export default function AddTask() {
     if (userContext.role != 'teacher') return <></>
     const [task, setTask] = useState(initialTaskState);
     const [success, setSuccess] = useState(false);
-    const [visible, setVisible] = useState(false);
     const [students, setStudents] = useState(parent_student.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id))
 
 
