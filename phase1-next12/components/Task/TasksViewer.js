@@ -44,7 +44,6 @@ export default function TasksViewer() {
         useEffect(()=>{
             if(selectedName=='-'){
                 setStudents(studentsList)
-                setSelectedStatus('all')
             }else{
                 setStudents(studentsList.filter(s => s.studentId == selectedName))
             }
@@ -81,7 +80,7 @@ export default function TasksViewer() {
                         sx={{ marginTop: "10px", width: "250px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
-                        {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
+                        {[...studentsList,'-'].map(s => <MenuItem key={s.studentId  || '-'} value={s.studentId || '-'}>{`${s.lastName || ""}${s.lastName ?  "," : " "} ${s.firstName || '-'}`}</MenuItem>)}
                     </Select>
 
                     <Typography
@@ -105,7 +104,7 @@ export default function TasksViewer() {
                     >
                         {['completed', 'pending', 'all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                     </Select>
-                    <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+                    <Button onClick={()=>{setSelectedName('-'); setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
 
                 </Stack>
                 {/* {JSON.stringify(students)} */}
@@ -126,8 +125,9 @@ export default function TasksViewer() {
                                             </Avatar>
                                         </ListItemAvatar>
                                         <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
-                                        <span>{`DUE: ${t.dueDate}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
                                 </>
                             )}
@@ -174,6 +174,7 @@ export default function TasksViewer() {
                     >
                         Student
                     </Typography>
+                    
                     <Select
                         size="small"
                         labelId="demo-simple-select-label"
@@ -184,7 +185,7 @@ export default function TasksViewer() {
                         sx={{ marginTop: "10px", width: "250px" }}
                         inputProps={{ "aria-label": "Halaqa" }}
                     >
-                        {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
+                           {[...studentsList,'-'].map(s => <MenuItem key={s.studentId  || '-'} value={s.studentId || '-'}>{`${s.lastName || ""}${s.lastName ?  "," : " "} ${s.firstName || '-'}`}</MenuItem>)}
                     </Select>
 
                     <Typography
@@ -230,8 +231,9 @@ export default function TasksViewer() {
                                         </ListItemAvatar>
                                         <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
                                         secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px" }}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
-                                        <span>{`DUE: ${t.dueDate}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
+                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
                                 </>
                             )}

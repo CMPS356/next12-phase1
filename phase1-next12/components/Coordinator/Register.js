@@ -8,6 +8,7 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
+import Alert from '@mui/material/Alert';
 import { Stack } from "@mui/system";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -67,6 +68,7 @@ const Register = () => {
   const [parent, setParent] = useState(initialParentState);
   const [errors, setErrors] = useState(initialError);
   const [firstHalaqa, setFirstHalaqa] = useState(staff.find(s => !s.isCoordinator).staffNo)
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setStudent({ ...student, teacherId: firstHalaqa});
@@ -107,10 +109,23 @@ const Register = () => {
 
     studentService.create({ parent, students: [...students, student] });
 
+    setSuccess(true)
+
     setStudents([]);
     setParent(initialParentState);
     setStudent({...initialStudentState, teacherId: firstHalaqa});
   };
+
+  useEffect(()=>{
+    const timeout = setTimeout(() => {
+        setSuccess(false)
+      }, 4000);
+
+    return () => {
+        clearTimeout(timeout);
+      };
+   },[success])
+
 
   return (
     <>
@@ -119,7 +134,7 @@ const Register = () => {
           <HowToRegIcon fontSize="large" sx={{ marginRight: "5px" }} />
           <Typography
             variant="h5"
-            sx={{ fontSize: "27px", marginBottom: "30px", fontFamily: "unset" , textDecorationLine: "underline"}}
+            sx={{ fontSize: "27px", marginBottom: "80px", fontFamily: "unset" , textDecorationLine: "underline"}}
           >
             Registeration
           </Typography>
@@ -140,7 +155,7 @@ const Register = () => {
           >
             <Stack
               flexDirection="column"
-              sx={{ width: "350px", alignItems: "center", marginLeft: "100px" }}
+              sx={{ width: "350px", alignItems: "center", marginLeft: "50px" }}
             >
               <Typography component="h1" variant="h5" sx={{...styleBlock.margin,  textDecorationLine: "underline"}}>
                 Parent Information
@@ -449,7 +464,7 @@ const Register = () => {
                 size="small"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={student.studentId}
+                  value={student.teacherId}
                   name="teacherId"
                   onChange={handleStudentChange}
                   sx={{ marginTop: "10px", width: "278px" }}
@@ -477,11 +492,12 @@ const Register = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 3, mb: 2, marginLeft: "100px", width: "860px" , backgroundColor:"#254e58"}}
+            sx={{ mt: 3, mb: 2, marginLeft: "50px", width: "860px" , backgroundColor:"#254e58"}}
             onClick={handleSubmit}
           >
             Register
           </Button>
+          <Alert severity="success" sx={{display: !success && 'none' , marginLeft: "50px"}}>Successfully Registerd Student!</Alert>
         </Box>
       </Box>
       {/* <div>{JSON.stringify(parent)}</div>

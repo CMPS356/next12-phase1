@@ -49,7 +49,6 @@ export default function Tasks() {
     useEffect(()=>{
         if(selectedName=='-'){
             setStudents(studentsList)
-            setSelectedStatus('all')
         }else{
             setStudents(studentsList.filter(s => s.studentId == selectedName))
         }
@@ -68,7 +67,7 @@ export default function Tasks() {
     const setCompleteDate = (task, value) => {
         console.log(value)
         if (value) {
-            taskService.update(task.taskId, { ...task, completedDate: `${new Date().toDateString()}` })
+            taskService.update(task.taskId, { ...task, completedDate: `${task.completedDate ?? new Date().toDateString().substring(4)}` })
         }
         else {
             const updatedTask = task
@@ -103,7 +102,7 @@ export default function Tasks() {
 
     if (userContext.role != 'teacher') return <></>
     return (
-        <Box sx={{ flexGrow: 1, marginTop: "20px" }}>
+        <Box sx={{ flexGrow: 1, marginTop: "70px" }}>
             {/* {JSON.stringify(selectedName)} */}
             <Stack flexDirection="row" sx={{ marginBottom: "20px" }}>
                 <Typography
@@ -125,7 +124,7 @@ export default function Tasks() {
                     sx={{ marginTop: "10px", width: "250px" }}
                     inputProps={{ "aria-label": "Halaqa" }}
                 >
-                    {studentsList.map(s => <MenuItem key={s.studentId} value={s.studentId}>{`${s.lastName}, ${s.firstName}`}</MenuItem>)}
+                       {[...studentsList,'-'].map(s => <MenuItem key={s.studentId  || '-'} value={s.studentId || '-'}>{`${s.lastName || ""}${s.lastName ?  "," : " "} ${s.firstName || '-'}`}</MenuItem>)}
                 </Select>
 
                 <Typography
@@ -149,12 +148,12 @@ export default function Tasks() {
                 >
                     {['completed','pending','all'].map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </Select>
-                <Button onClick={()=>{setSelectedName('-')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
+                <Button onClick={()=>{setSelectedName('-'); setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
             </Stack>
 
             <Grid item xs={12} md={6}>
-                <Box sx={{ flexGrow: 1, width: "1000px", height: "500px", overflow: "auto" }}>
-                    <List sx={{ marginLeft: '20px', height: "90px", marginTop: "50px" }}>
+                <Box sx={{ flexGrow: 1, width: "1000px", height: "450px", overflow: "auto" }}>
+                    <List sx={{ height: "90px", marginTop: "50px" }}>
                         {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                             <>
                                 <ListItem

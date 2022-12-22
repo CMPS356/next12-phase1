@@ -40,11 +40,12 @@ export default function UpdateAnnouncement ({ onClose, open, announcement: ann, 
       <DialogTitle>Update Announcement</DialogTitle>
      <Stack sx={{alignItems:"center"}}>
      <TextField
-          sx={{ width: "300px", justifyContent: "center" }}
+          sx={{ width: "400px", justifyContent: "center"}}
           size="small"
           margin="normal"
           required
           fullWidth
+          multiline
           name="announcement"
           value={announcement.text}
           label="Announcement"

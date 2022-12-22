@@ -19,7 +19,7 @@
                 "gender": "F",
                 "schoolGrade": 0,
                 "teacherId": 501,
-                "isActive": "true"
+                "isActive": "false"
             },
             {
                 "studentId": 2,
@@ -29,7 +29,7 @@
                 "gender": "F",
                 "schoolGrade": "3",
                 "teacherId": 501,
-                "isActive": "false"
+                "isActive": "true"
             }
         ]
     },

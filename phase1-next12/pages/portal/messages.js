@@ -123,22 +123,25 @@ export default function Page() {
 
     return (
         <>
+                    <Box sx={{ padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px"}}>
+
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
+                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none"}}
             >
-                Messages
-            </Typography>
-            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
+               &nbsp; Messages
+            </Typography></Box>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
+
+            <Box sx={{ flexGrow: 1, width: "100%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
 
                 <Demo>
-
-                    <List sx={{ height: "10%", width: "50%" }}>
+                    <List sx={{ height: "10%", width: "100%" }}>
                         {students?.map((s, i) =>
                             <>
 
                                 <ListItem
-                                    sx={{ width: "550px", height: "100%" }}
+                                    sx={{ width: "850px", height: "110%" }}
                                     key={s}
                                     secondaryAction={
 
@@ -166,17 +169,17 @@ export default function Page() {
                 </Demo>
 
             </Box>
-            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
-                <h2 sx={{ display: student && "none" }}>Chat with {student?.firstName} {student?.lastName}</h2>
-                <Demo>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginY: "50px" }}></hr>
 
-                    <List sx={{ height: "50%", width: "50%" }}>
+            <Box sx={{ flexGrow: 1, width: "100%", height: "40%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px", marginTop: "20px"}}>
+                <h2 sx={{ display: student && "none" }}>&nbsp; Chat with {student?.firstName} {student?.lastName}</h2>
+                
+
+                    <List sx={{width: "100%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
-                            <>
-                                <div style={{ justifyContent: "end", width: "815px" }}>
-                                </div>
+                            <Demo key={m.id}>
                                 <ListItem
-                                    sx={{ width: "550px", height: "70px" }}
+                                    sx={{ width: "550px", height: "60px" }}
                                     key={m.id}
                                     secondaryAction={
                                         userContext.role == "teacher" ?
@@ -201,15 +204,17 @@ export default function Page() {
                                             :
                                             null
                                     }
-                                >
+                                > 
 
-                                    <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
+                                <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
                                 </ListItem>
-                            </>
+                                <div style={{height:"10px", backgroundColor:'#e4ebea', width: "200%"}}> </div >
+                                </Demo>
                         )}
+                        
 
                     </List>
-                </Demo>
+                
 
 
 
