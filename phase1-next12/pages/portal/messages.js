@@ -27,6 +27,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 import { useLoginStore } from "../../stores/loginStore";
 import UpdateMessage from "../../components/Message/UpdateMessage";
 import { messageService } from "../../services/messages-service";
+import Image from 'next/image'
+
 const parents_students = require("../../data/parent-student.json");
 const _staff = require("../../data/staff.json");
 
@@ -44,6 +46,9 @@ export default function Page() {
     const [students, setStudents] = useState([])
     const [student, setStudent] = useState(null)
     const [messages, setMessages] = useState([])
+    const [images, setImages] = useState([])
+    const [imageURLs, setimageURLs] = useState([])
+
     function getStudents() {
         if (userContext.role == "parent") {
             const parent = parents_students?.find((ps) =>
@@ -72,17 +77,7 @@ export default function Page() {
 
     }, [userContext]);
 
-    // useEffect(() => {
-    //     getStudents()
-    //     console.log(student)
 
-    // }, [students]);
-
-    useEffect(() => {
-        // setMessages(_messages.filter((m) => m.recepientID == student?.studentId))
-
-
-    }, [student]);
 
     const handleClick = (s) => {
         setStudent(s)
@@ -105,11 +100,26 @@ export default function Page() {
         messageService.removeMessage(message.id)
     };
 
+    const handleImageChange = (e) => {
+        setImages([...e.target.files])
+    }
+
+    useEffect(() => {
+        if (images.length < 1) return;
+        const newImageURLs = []
+        images.forEach(image => newImageURLs.push(URL.createObjectURL(image)))
+        setimageURLs(newImageURLs)
+        console.log(images)
+    }, [images])
+
     const handleMessageChange = (e) => {
         const text = e.target.value;
-        const newMessage = { text: text, senderID: userContext.id, recepientID: student?.studentId }
+        const newMessage = { text: text, images: imageURLs, senderID: userContext.id, recepientID: student?.studentId }
         setMessage(newMessage);
+        console.log(imageURLs)
+
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -123,25 +133,22 @@ export default function Page() {
 
     return (
         <>
-                    <Box sx={{ padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px"}}>
-
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none"}}
+                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
             >
-               &nbsp; Messages
-            </Typography></Box>
-            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
-
-            <Box sx={{ flexGrow: 1, width: "100%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
+                Messages
+            </Typography>
+            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
 
                 <Demo>
-                    <List sx={{ height: "10%", width: "100%" }}>
+
+                    <List sx={{ height: "10%", width: "50%" }}>
                         {students?.map((s, i) =>
                             <>
 
                                 <ListItem
-                                    sx={{ width: "850px", height: "110%" }}
+                                    sx={{ width: "550px", height: "100%" }}
                                     key={s}
                                     secondaryAction={
 
@@ -169,17 +176,17 @@ export default function Page() {
                 </Demo>
 
             </Box>
-            <hr style={{ border: "1px lightgray rounded", width: "900px", marginY: "50px" }}></hr>
+            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
+                <h2 sx={{ display: student && "none" }}>Chat with {student?.firstName} {student?.lastName}</h2>
+                <Demo>
 
-            <Box sx={{ flexGrow: 1, width: "100%", height: "40%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px", marginTop: "20px"}}>
-                <h2 sx={{ display: student && "none" }}>&nbsp; Chat with {student?.firstName} {student?.lastName}</h2>
-                
-
-                    <List sx={{width: "100%" }}>
+                    <List sx={{ height: "50%", width: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
-                            <Demo key={m.id}>
+                            <>
+                                <div style={{ justifyContent: "end", width: "815px" }}>
+                                </div>
                                 <ListItem
-                                    sx={{ width: "550px", height: "60px" }}
+                                    sx={{ width: "550px", height: "70px" }}
                                     key={m.id}
                                     secondaryAction={
                                         userContext.role == "teacher" ?
@@ -204,17 +211,23 @@ export default function Page() {
                                             :
                                             null
                                     }
-                                > 
+                                >
+                                    {m?.images?.map((image) => {
+                                        <Image
+                                            src={image}
+                                            width={500}
+                                            height={500}
+                                        />
+                                    })}
+                                    <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
+                                    {/* <img src="blob:http://localhost:3000/18c66df0-850d-486e-9a99-9b98e46d29de" /> */}
 
-                                <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
                                 </ListItem>
-                                <div style={{height:"10px", backgroundColor:'#e4ebea', width: "200%"}}> </div >
-                                </Demo>
+                            </>
                         )}
-                        
 
                     </List>
-                
+                </Demo>
 
 
 
@@ -232,6 +245,7 @@ export default function Page() {
                 id="message"
                 onChange={handleMessageChange}
             />
+            <input type="file" multiple accept="image/*" onChange={handleImageChange} />
             <Button
                 type="submit"
                 variant="contained"
@@ -242,10 +256,10 @@ export default function Page() {
                 Send Message
             </Button>
             <UpdateMessage
-            open={open}
-            message={updateMessage}
-            selectedValue={selectedValue}
-            onClose={handleClose}
+                open={open}
+                message={updateMessage}
+                selectedValue={selectedValue}
+                onClose={handleClose}
             />
         </>
 
