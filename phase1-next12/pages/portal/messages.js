@@ -136,13 +136,12 @@ export default function Page() {
             <Box sx={{ flexGrow: 1, width: "100%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
 
                 <Demo>
-
                     <List sx={{ height: "10%", width: "100%" }}>
                         {students?.map((s, i) =>
                             <>
 
                                 <ListItem
-                                    sx={{ width: "550px", height: "110%" }}
+                                    sx={{ width: "850px", height: "110%" }}
                                     key={s}
                                     secondaryAction={
 
@@ -178,7 +177,7 @@ export default function Page() {
 
                     <List sx={{width: "100%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
-                            <Demo>
+                            <Demo key={m.id}>
                                 <ListItem
                                     sx={{ width: "550px", height: "60px" }}
                                     key={m.id}

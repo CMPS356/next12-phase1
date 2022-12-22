@@ -18,6 +18,7 @@ export default function Home() {
             </Typography></Box>
                 <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
 
+    
     <Tasks />
     <TasksViewer />
   </>

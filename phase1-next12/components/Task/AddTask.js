@@ -64,8 +64,6 @@ export default function AddTask() {
     const [success, setSuccess] = useState(false);
     const [students, setStudents] = useState(parent_student.filter(p => p.students.filter(ss => ss.teacherId == userContext.id)).flatMap(p => p.students).filter(ss => ss.teacherId == userContext.id))
 
-
-
     useEffect(() => {
         setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type: "Memorization", dueDate: `${tomorrowsDate().toDateString().substring(4)}` });
     }, []);
