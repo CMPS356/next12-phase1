@@ -26,7 +26,7 @@ export function updateMessage(messageId, message){
 export function deleteMessage(id){
     const index = _messages.findIndex(m => m.id == id)
 
-    _announcements.splice(index,1)
+    _messages.splice(index,1)
     saveData()
 }
 
