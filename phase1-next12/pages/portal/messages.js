@@ -129,6 +129,7 @@ export default function Page() {
         console.log({ message })
         message.text = ""
         setMessage(message)
+        message.images.map((img) => console.log(img))
     };
 
     return (
@@ -183,8 +184,17 @@ export default function Page() {
                     <List sx={{ height: "50%", width: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
                             <>
+                             {m?.images?.map((image,id) => {
+                                        <Image
+                                            src={image}
+                                            width={500}
+                                            height={500}
+                                            id={id}
+                                        />
+                                    })}
                                 <div style={{ justifyContent: "end", width: "815px" }}>
                                 </div>
+                               
                                 <ListItem
                                     sx={{ width: "550px", height: "70px" }}
                                     key={m.id}
@@ -212,13 +222,7 @@ export default function Page() {
                                             null
                                     }
                                 >
-                                    {m?.images?.map((image) => {
-                                        <Image
-                                            src={image}
-                                            width={500}
-                                            height={500}
-                                        />
-                                    })}
+                                    
                                     <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
                                     {/* <img src="blob:http://localhost:3000/18c66df0-850d-486e-9a99-9b98e46d29de" /> */}
 
