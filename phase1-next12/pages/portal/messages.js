@@ -29,7 +29,7 @@ import UpdateMessage from "../../components/Message/UpdateMessage";
 import { messageService } from "../../services/messages-service";
 import Image from 'next/image'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import { Stack, style } from "@mui/system";
+import { Stack } from "@mui/system";
 
 const parents_students = require("../../data/parent-student.json");
 const _staff = require("../../data/staff.json");
@@ -116,6 +116,10 @@ export default function Page() {
         { images?.map((img) => console.log(img.name)) }
     }, [images])
 
+    useEffect(() => {
+        setMessage({...message, images: imageURLs})
+      }, [imageURLs])
+
     const handleMessageChange = (e) => {
         const text = e.target.value;
         const newMessage = { text: text, images: imageURLs, senderID: userContext.id, recepientID: student?.studentId }
@@ -184,32 +188,25 @@ export default function Page() {
             </Box>
 
             <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
-                <h2 sx={{ display: student && "none" }}>Chat with {student?.firstName} {student?.lastName}</h2>
+                <h2 style={{ display: !student && "none" }}>Chat with: {student?.firstName} {student?.lastName}</h2>
+                <h2 style={{ display: student && "none" }}>Chat Box</h2>
+
                 <Demo>
 
                     <List sx={{ height: "50%", width: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
                             <>
-                                <ul style={{listStyle:"none"}}>
+                               
+                                <div style={{ justifyContent: "end", width: "815px", backgroundColor: "#f8f8f8" }}>
+                                <ul style={{listStyle:"none", margin: 5}}>
                                     {m?.images?.map((image) => (
                                         <li key={image}>
-                                            <img src={image} width={20} height={20} />
+                                            <img src={image} width={150} height={150} />
                                         </li>
                                     ))}
                                 </ul>
-                                <div style={{ justifyContent: "end", width: "815px" }}>
-                                </div>
-                                {/* {m?.images?.map((image,id) => {
-                                        <Image
-                                            src={image}
-                                            width={10}
-                                            height={10}
-                                            id={id}
-                                        />
-                                    })} */}
-
                                 <ListItem
-                                    sx={{ width: "550px", height: "70px" }}
+                                    sx={{ width: "550px", height: "70px", marginBottom: 2 }}
                                     key={m.id}
                                     secondaryAction={
                                         userContext.role == "teacher" ?
@@ -237,10 +234,11 @@ export default function Page() {
                                 >
 
 
-                                    <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
-                                    {/* <img src="blob:http://localhost:3000/18c66df0-850d-486e-9a99-9b98e46d29de" /> */}
+                                    <ListItemText sx={{ marginRight: "20px", padding: 2 }} primary={`${m.text}`} secondary={m.date} />
 
                                 </ListItem>
+                                </div>
+
                             </>
                         )}
 
@@ -250,11 +248,11 @@ export default function Page() {
 
 
             </Box>
-            <Stack direction="row" sx={{ alignItems: "center" }}>
+            <Stack direction="row" sx={{ alignItems: "center", display: (userContext.role !== "teacher" || !student) && "none" }}>
                 <TextField
                     size="large"
                     sx={{
-                        width: "60%", mt: 3, mb: 2, mr: 2, display: userContext.role !== "teacher" && "none"
+                        width: "60%", mt: 3, mb: 2, mr: 2 
                     }}
                     margin="normal"
                     fullWidth
@@ -281,7 +279,7 @@ export default function Page() {
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2, width: "83%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "teacher" && "none" }}
+                sx={{ mt: 3, mb: 2, width: "83%", height: "6%", backgroundColor: "#254e58", display: (userContext.role !== "teacher" || !student) && "none" }}
                 onClick={handleSubmit}
 
             >

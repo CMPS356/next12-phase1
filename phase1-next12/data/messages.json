@@ -43,9 +43,14 @@
     },
     {
         "id": "1b8ad8e4-c01e-4a2d-8de4-ed844b0ccc1c",
-        "text": "Check your tasks today :)",
         "senderID": 501,
         "recepientID": 1,
+        "text": "images uploaded!",
+        "images": [
+            "blob:http://localhost:3000/4db4e1cc-302a-4071-b99f-ab112022422f",
+            "blob:http://localhost:3000/3381738a-66de-4ca7-8ae8-0e8681c9be29",
+            "blob:http://localhost:3000/7a60b0c7-051a-40c4-a4b7-19199190b75b"
+        ],
         "date": "Mon Dec 19 2022 - 1:42:19 AM"
     },
     {
@@ -63,40 +68,20 @@
         "date": "Wed Dec 21 2022 - 10:13:46 PM"
     },
     {
-        "id": "82da9f72-1a78-44e8-b8e6-a8e67a209c5c",
-        "text": "hi",
-        "images": [
-            "blob:http://localhost:3000/c6c57654-da0d-4c0d-8e59-6a669d7311a2"
-        ],
+        "id": "4b3f47c2-39f9-4812-9948-3d76979675d5",
         "senderID": 501,
-        "recepientID": 1,
-        "date": "Thu Dec 22 2022 - 5:12:45 PM"
+        "recepientID": 7,
+        "text": "Ibn Juha did well today!",
+        "date": "Sat Dec 24 2022 - 12:59:34 AM"
     },
     {
-        "id": "b908afa0-469a-420e-ad0a-21a030aeef3d",
-        "text": "hello",
+        "id": "cbc181df-cbf8-4c61-b464-ea6df43f12d3",
+        "text": "Please take a look at your child's schedule",
         "images": [
-            "blob:http://localhost:3000/70accd86-d1af-4eab-b702-aa589fccd3d9",
-            "blob:http://localhost:3000/788a5b05-4eae-45c6-8985-037ddb292caf",
-            "blob:http://localhost:3000/7ea4466b-b40f-4c74-85a3-b0119a92627d",
-            "blob:http://localhost:3000/e4077375-764f-4d49-a93c-f211bfc3b99c",
-            "blob:http://localhost:3000/d25f652b-795e-48fe-8b3c-25f89a69664b",
-            "blob:http://localhost:3000/bd040c82-523d-4596-900b-f5568f24c254"
+            "blob:http://localhost:3000/f6f6bcb2-c80b-4e4f-a869-3c567b13949b"
         ],
         "senderID": 501,
-        "recepientID": 1,
-        "date": "Thu Dec 22 2022 - 5:14:31 PM"
-    },
-    {
-        "id": "b25ee21d-8ca5-4376-8ac9-e55274883bd2",
-        "text": "h",
-        "images": [
-            "blob:http://localhost:3000/903a89e7-9c60-499f-a218-f59b5201a658",
-            "blob:http://localhost:3000/5f7f3735-f723-4f5b-bfec-7d18474cda78",
-            "blob:http://localhost:3000/f534face-9566-478e-833c-a5643681d306"
-        ],
-        "senderID": 501,
-        "recepientID": 1,
-        "date": "Thu Dec 22 2022 - 5:15:52 PM"
+        "recepientID": 5,
+        "date": "Sat Dec 24 2022 - 1:41:58 AM"
     }
 ]
