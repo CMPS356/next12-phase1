@@ -193,12 +193,12 @@ export default function Page() {
 
                 <Demo>
 
-                    <List sx={{ height: "50%", width: "50%" }}>
+                    <List sx={{ height: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
                             <>
                                
-                                <div style={{ justifyContent: "end", width: "815px", backgroundColor: "#f8f8f8" }}>
-                                <ul style={{listStyle:"none", margin: 5}}>
+                                <div style={{ backgroundColor: "#f8f8f8" }}>
+                                <ul style={{listStyle:"none"}}>
                                     {m?.images?.map((image) => (
                                         <li key={image}>
                                             <img src={image} width={150} height={150} />
@@ -206,7 +206,7 @@ export default function Page() {
                                     ))}
                                 </ul>
                                 <ListItem
-                                    sx={{ width: "550px", height: "70px", marginBottom: 2 }}
+                                    sx={{ width: "90%", height: "70px", marginBottom: 2 }}
                                     key={m.id}
                                     secondaryAction={
                                         userContext.role == "teacher" ?
@@ -234,7 +234,7 @@ export default function Page() {
                                 >
 
 
-                                    <ListItemText sx={{ marginRight: "20px", padding: 2 }} primary={`${m.text}`} secondary={m.date} />
+                                    <ListItemText sx={{  padding: 2 }} primary={`${m.text}`} secondary={m.date} />
 
                                 </ListItem>
                                 </div>
