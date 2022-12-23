@@ -9,11 +9,11 @@ export default function Home() {
   return (<>
     {/* <h2 style={{marginBottom: "80px"}}>Students Tasks</h2> */}
     <AddTask />
-    <Box sx={{ padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px"}}>
+    <Box sx={{ padding: "15px" , backgroundColor:'#ADC1C9', borderRadius:"5px"}}>
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none"}}
-            >
+                sx={{ fontFamily: "serif", letterSpacing: "2px", fontWeight: "bold", fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", color:"white" }}
+                >
                 &nbsp;Tasks
             </Typography></Box>
                 <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>

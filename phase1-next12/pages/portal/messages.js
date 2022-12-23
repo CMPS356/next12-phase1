@@ -117,8 +117,8 @@ export default function Page() {
     }, [images])
 
     useEffect(() => {
-        setMessage({...message, images: imageURLs})
-      }, [imageURLs])
+        setMessage({ ...message, images: imageURLs })
+    }, [imageURLs])
 
     const handleMessageChange = (e) => {
         const text = e.target.value;
@@ -143,13 +143,16 @@ export default function Page() {
 
     return (
         <>
-            <Typography
-                variant="h5"
-                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", marginBottom: "20px" }}
-            >
-                Messages
-            </Typography>
-            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", marginBottom: "20px" }}>
+            <Box sx={{ padding: "15px", backgroundColor: '#ADC1C9', borderRadius: "5px", width: "900px" }}>
+                <Typography
+                    variant="h5"
+                    sx={{ fontFamily: "serif", letterSpacing: "2px", fontWeight: "bold", fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", color:"white" }}
+                >
+                    &nbsp;Messages
+                </Typography></Box>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
+
+            <Box sx={{ flexGrow: 1, width: "900px", height: "30%", overflow: "auto", marginBottom: "20px" }}>
 
                 <Demo>
 
@@ -158,7 +161,7 @@ export default function Page() {
                             <>
 
                                 <ListItem
-                                    sx={{ width: "550px", height: "100%" }}
+                                    sx={{ width: "800px", height: "100%" }}
                                     key={s}
                                     secondaryAction={
 
@@ -187,7 +190,7 @@ export default function Page() {
 
             </Box>
 
-            <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
+            <Box sx={{ flexGrow: 1, width: "900px", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
                 <h2 style={{ display: !student && "none" }}>Chat with: {student?.firstName} {student?.lastName}</h2>
                 <h2 style={{ display: student && "none" }}>Chat Box</h2>
 
@@ -196,47 +199,47 @@ export default function Page() {
                     <List sx={{ height: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
                             <>
-                               
+
                                 <div style={{ backgroundColor: "#f8f8f8" }}>
-                                <ul style={{listStyle:"none"}}>
-                                    {m?.images?.map((image) => (
-                                        <li key={image}>
-                                            <img src={image} width={150} height={150} />
-                                        </li>
-                                    ))}
-                                </ul>
-                                <ListItem
-                                    sx={{ width: "90%", height: "70px", marginBottom: 2 }}
-                                    key={m.id}
-                                    secondaryAction={
-                                        userContext.role == "teacher" ?
-                                            <>
-                                                <IconButton
-                                                    edge="end"
-                                                    aria-label="delete"
-                                                    onClick={() => handleDelete(m)}
-                                                >
-                                                    <DeleteIcon />
-                                                </IconButton>
+                                    <ul style={{ listStyle: "none" }}>
+                                        {m?.images?.map((image) => (
+                                            <li key={image}>
+                                                <img src={image} width={150} height={150} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <ListItem
+                                        sx={{ width: "90%", height: "70px", marginBottom: 2 }}
+                                        key={m.id}
+                                        secondaryAction={
+                                            userContext.role == "teacher" ?
+                                                <>
+                                                    <IconButton
+                                                        edge="end"
+                                                        aria-label="delete"
+                                                        onClick={() => handleDelete(m)}
+                                                    >
+                                                        <DeleteIcon />
+                                                    </IconButton>
 
-                                                <IconButton
-                                                    edge="end"
-                                                    aria-label="update"
-                                                    sx={{ marginLeft: "50px" }}
-                                                    onClick={() => handleClickOpen(m)}
-                                                >
-                                                    <BorderColorIcon />
-                                                </IconButton>
-                                            </>
-                                            :
-                                            null
-                                    }
-                                >
+                                                    <IconButton
+                                                        edge="end"
+                                                        aria-label="update"
+                                                        sx={{ marginLeft: "50px" }}
+                                                        onClick={() => handleClickOpen(m)}
+                                                    >
+                                                        <BorderColorIcon />
+                                                    </IconButton>
+                                                </>
+                                                :
+                                                null
+                                        }
+                                    >
 
 
-                                    <ListItemText sx={{  padding: 2 }} primary={`${m.text}`} secondary={m.date} />
+                                        <ListItemText sx={{ padding: 2 }} primary={`${m.text}`} secondary={m.date} />
 
-                                </ListItem>
+                                    </ListItem>
                                 </div>
 
                             </>
@@ -252,7 +255,7 @@ export default function Page() {
                 <TextField
                     size="large"
                     sx={{
-                        width: "60%", mt: 3, mb: 2, mr: 2 
+                        width: "90%", mt: 3, mb: 2, mr: 2
                     }}
                     margin="normal"
                     fullWidth
@@ -260,11 +263,12 @@ export default function Page() {
                     label="Message"
                     id="message"
                     onChange={handleMessageChange}
+                    multiline
+                    rows={2}
                 />
 
-                <Button variant="contained" component="label" sx={{ backgroundColor: "#254e58", mr: 1 }}>
+                <Button variant="contained" component="label" sx={{ backgroundColor: "#254e58", mr: 2,  width: "300px", height:"70px" }}>
                     <AddPhotoAlternateIcon />
-
                     Upload Images
                     <input hidden accept="image/*" multiple type="file" onChange={handleImageChange} />
                 </Button>
@@ -279,7 +283,7 @@ export default function Page() {
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2, width: "83%", height: "6%", backgroundColor: "#254e58", display: (userContext.role !== "teacher" || !student) && "none" }}
+                sx={{ mt: 3, mb: 2, width: "900px", height: "6%", backgroundColor: "#254e58", display: (userContext.role !== "teacher" || !student) && "none" }}
                 onClick={handleSubmit}
 
             >

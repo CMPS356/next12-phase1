@@ -42,14 +42,14 @@ export default function UpdateMessage({ onClose, open, message: msg, selectedVal
   }, [images])
 
   useEffect(() => {
-    setMessage({...message, images: imageURLs})
+    setMessage({ ...message, images: imageURLs })
   }, [imageURLs])
 
   const handleMessageChange = (e) => {
     console.log(imageURLs)
     let value = e.target.value;
     setMessage({ ...message, text: value });
-    
+
   };
 
   const updateMessage = () => {
@@ -78,6 +78,8 @@ export default function UpdateMessage({ onClose, open, message: msg, selectedVal
           id="message"
           width="3px"
           onChange={handleMessageChange}
+          multiline
+          rows={4}
         />
         <Button variant="contained" component="label" sx={{ backgroundColor: "#254e58", mr: 1 }}>
           <AddPhotoAlternateIcon />

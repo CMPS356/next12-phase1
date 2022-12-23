@@ -71,24 +71,24 @@ export default function Page() {
 
     return (
         <>
-           <Box sx={{ padding: "15px" , backgroundColor:'#e4ebea', borderRadius:"5px"}}>
+           <Box sx={{ padding: "15px" , backgroundColor:'#ADC1C9', borderRadius:"5px", width:"900px"}}>
             <Typography
                 variant="h5"
-                sx={{ fontSize: "27px", fontFamily: "unset", textDecorationLine: "none"}}
-            >
+                sx={{ fontFamily: "serif", letterSpacing: "2px", fontWeight: "bold", fontSize: "27px", fontFamily: "unset", textDecorationLine: "none", color:"white" }}
+                >
                 &nbsp;Announcements
             </Typography></Box>
             <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
-            <Box sx={{ flexGrow: 1, width: "100%", height: "77%", overflow: "auto" }}>
+            <Box sx={{ flexGrow: 1, width: "900px", overflow: "auto" }}>
 
                 <Demo>
 
-                    <List sx={{  height: "20%", width: "80%" }}>
+                    <List sx={{  height: "20%", width: "50%" }}>
                         {announcements.map((s, i) =>
                             <>
 
                                 <ListItem
-                                    sx={{ width: "100%", height: "100%" }}
+                                    sx={{ width: "800px", height: "100%" }}
                                     key={s}
                                     secondaryAction={
                                         userContext.role == "coordinator" ?
@@ -126,7 +126,6 @@ export default function Page() {
                         )}
                     </List>
                 </Demo>
-                <hr style={{ border: "1px lightgray rounded", width: "1000px", marginTop: "20px" }}></hr>
 
             </Box>
             <TextField
