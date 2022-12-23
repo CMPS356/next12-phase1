@@ -28,6 +28,8 @@ import { useLoginStore } from "../../stores/loginStore";
 import UpdateMessage from "../../components/Message/UpdateMessage";
 import { messageService } from "../../services/messages-service";
 import Image from 'next/image'
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import { Stack, style } from "@mui/system";
 
 const parents_students = require("../../data/parent-student.json");
 const _staff = require("../../data/staff.json");
@@ -110,6 +112,8 @@ export default function Page() {
         images.forEach(image => newImageURLs.push(URL.createObjectURL(image)))
         setimageURLs(newImageURLs)
         console.log(images)
+        _messages.filter(m => student?.studentId == m.recepientID).map((i) => console.log(i.images))
+        { images?.map((img) => console.log(img.name)) }
     }, [images])
 
     const handleMessageChange = (e) => {
@@ -131,6 +135,7 @@ export default function Page() {
         setMessage(message)
         message.images.map((img) => console.log(img))
     };
+
 
     return (
         <>
@@ -177,6 +182,7 @@ export default function Page() {
                 </Demo>
 
             </Box>
+
             <Box sx={{ flexGrow: 1, width: "80%", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
                 <h2 sx={{ display: student && "none" }}>Chat with {student?.firstName} {student?.lastName}</h2>
                 <Demo>
@@ -184,17 +190,24 @@ export default function Page() {
                     <List sx={{ height: "50%", width: "50%" }}>
                         {_messages.filter(m => student?.studentId == m.recepientID).map((m, i) =>
                             <>
-                             {m?.images?.map((image,id) => {
-                                        <Image
-                                            src={image}
-                                            width={500}
-                                            height={500}
-                                            id={id}
-                                        />
-                                    })}
+                                <ul style={{listStyle:"none"}}>
+                                    {m?.images?.map((image) => (
+                                        <li key={image}>
+                                            <img src={image} width={20} height={20} />
+                                        </li>
+                                    ))}
+                                </ul>
                                 <div style={{ justifyContent: "end", width: "815px" }}>
                                 </div>
-                               
+                                {/* {m?.images?.map((image,id) => {
+                                        <Image
+                                            src={image}
+                                            width={10}
+                                            height={10}
+                                            id={id}
+                                        />
+                                    })} */}
+
                                 <ListItem
                                     sx={{ width: "550px", height: "70px" }}
                                     key={m.id}
@@ -222,7 +235,8 @@ export default function Page() {
                                             null
                                     }
                                 >
-                                    
+
+
                                     <ListItemText sx={{ marginRight: "20px" }} primary={`${m.text}`} secondary={m.date} />
                                     {/* <img src="blob:http://localhost:3000/18c66df0-850d-486e-9a99-9b98e46d29de" /> */}
 
@@ -236,24 +250,38 @@ export default function Page() {
 
 
             </Box>
+            <Stack direction="row" sx={{ alignItems: "center" }}>
+                <TextField
+                    size="large"
+                    sx={{
+                        width: "60%", mt: 3, mb: 2, mr: 2, display: userContext.role !== "teacher" && "none"
+                    }}
+                    margin="normal"
+                    fullWidth
+                    value={message.text}
+                    label="Message"
+                    id="message"
+                    onChange={handleMessageChange}
+                />
 
-            <TextField
-                size="large"
-                sx={{
-                    width: "60%", mt: 3, mb: 2, display: userContext.role !== "teacher" && "none"
-                }}
-                margin="normal"
-                fullWidth
-                value={message.text}
-                label="Message"
-                id="message"
-                onChange={handleMessageChange}
-            />
-            <input type="file" multiple accept="image/*" onChange={handleImageChange} />
+                <Button variant="contained" component="label" sx={{ backgroundColor: "#254e58", mr: 1 }}>
+                    <AddPhotoAlternateIcon />
+
+                    Upload Images
+                    <input hidden accept="image/*" multiple type="file" onChange={handleImageChange} />
+                </Button>
+
+                <p>{images.length} images uploaded</p>
+
+
+
+            </Stack>
+
+
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2, marginLeft: "70px", width: "30%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "teacher" && "none" }}
+                sx={{ mt: 3, mb: 2, width: "83%", height: "6%", backgroundColor: "#254e58", display: userContext.role !== "teacher" && "none" }}
                 onClick={handleSubmit}
 
             >
@@ -271,4 +299,3 @@ export default function Page() {
     );
 }
 
-//                                   
