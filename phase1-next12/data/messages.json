@@ -42,13 +42,6 @@
         "date": "Mon Dec 19 2022 - 1:26:25 AM"
     },
     {
-        "id": "1b8ad8e4-c01e-4a2d-8de4-ed844b0ccc1c",
-        "senderID": 501,
-        "recepientID": 1,
-        "text": "images uploaded!",
-        "date": "Mon Dec 19 2022 - 1:42:19 AM"
-    },
-    {
         "id": "e06952ad-7b50-4ffd-afeb-978751209ad4",
         "text": "Hey Ibn Abbas, i have assigned a Task for you!",
         "senderID": 501,
@@ -68,13 +61,6 @@
         "recepientID": 7,
         "text": "Ibn Juha did well today!",
         "date": "Sat Dec 24 2022 - 12:59:34 AM"
-    },
-    {
-        "id": "cbc181df-cbf8-4c61-b464-ea6df43f12d3",
-        "text": "Please take a look at your child's schedule",
-        "senderID": 501,
-        "recepientID": 5,
-        "date": "Sat Dec 24 2022 - 1:41:58 AM"
     },
     {
         "id": "d03c8d14-4910-4f2a-8aeb-d984bd1256ec",
