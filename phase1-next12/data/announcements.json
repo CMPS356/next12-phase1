@@ -18,5 +18,10 @@
         "id": "43696559-f744-4d73-8088-ee436ee88a9f",
         "text": "Get Tasks for a particular student by status either completed, pending or all tasks. The parent can only get the tasks for their children, the teacher can get the tasks for a student in their Halaqa while the coordinator can get the tasks for any student..",
         "date": "Mon Dec 12 2022 - 5:40:53 PM"
+    },
+    {
+        "id": "9bf5f845-56f1-4449-a8a9-0a7026be8403",
+        "text": "The parent, teacher, and coordinator can get messages for a particular student within a date range (by default the last 30 days). The parent can only get the messages for their children, the teacher can get the messages for a student in their Halaqa while the coordinator can get the messages for any student. As an extension to this use case, the teacher can also update or delete a message.",
+        "date": "Sat Dec 24 2022 - 1:37:48 PM"
     }
 ]

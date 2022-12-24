@@ -75,5 +75,13 @@
         "senderID": 501,
         "recepientID": 5,
         "date": "Sat Dec 24 2022 - 1:41:58 AM"
+    },
+    {
+        "id": "d03c8d14-4910-4f2a-8aeb-d984bd1256ec",
+        "text": "You can check your feedback and grading by 25th of May",
+        "images": [],
+        "senderID": 501,
+        "recepientID": 2,
+        "date": "Sat Dec 24 2022 - 1:42:03 PM"
     }
 ]

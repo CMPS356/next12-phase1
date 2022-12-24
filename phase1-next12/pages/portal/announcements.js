@@ -80,15 +80,12 @@ export default function Page() {
             </Typography></Box>
             <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "20px" }}></hr>
             <Box sx={{ flexGrow: 1, width: "900px", overflow: "auto" }}>
-
                 <Demo>
-
-                    <List sx={{  height: "20%", width: "50%" }}>
+                    <List sx={{  height: "800px", width: "50%" }}>
                         {announcements.map((s, i) =>
                             <>
-
                                 <ListItem
-                                    sx={{ width: "800px", height: "100%" }}
+                                    sx={{ width: "800px"}}
                                     key={s}
                                     secondaryAction={
                                         userContext.role == "coordinator" ?
