@@ -205,7 +205,7 @@ export default function Page() {
                                     <ul style={{ listStyle: "none" }}>
                                         {m?.images?.map((image) => (
                                             <li key={image}>
-                                                <img src={image} width={150} height={150} />
+                                                <img src={image} width={350} height={200} style={{padding:"10px"}} />
                                             </li>
                                         ))}
                                     </ul>
