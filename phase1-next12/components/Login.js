@@ -32,7 +32,7 @@ const Login = () => {
 
     if (parentStudent && parentStudent.parent.password == user.password) {
       setUserContext({ id: parentStudent.id, role: "parent" })
-      router.push('/portal')
+      router.push('/portal/announcements')
       return;
     }
 
@@ -42,10 +42,10 @@ const Login = () => {
 
     if (staff?.isCoordinator && staff.password == user.password) {
       setUserContext({ id: staff.staffNo, role: "coordinator" })
-      router.push('/portal')
+      router.push('/portal/announcements')
       return;
     } else if(staff.password == user.password){
-      setUserContext({ id: staff.staffNo, role: "teacher" }); router.push('/portal');
+      setUserContext({ id: staff.staffNo, role: "teacher" }); router.push('/portal/announcements');
     }else{
       alert(404); return 
     }

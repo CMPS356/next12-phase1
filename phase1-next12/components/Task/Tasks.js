@@ -161,7 +161,6 @@ export default function Tasks() {
                                     key={t.taskId}
                                     secondaryAction={
                                         <>
-                                            <span>{t.completedDate ? "COMPLETED" : "PENDING"}</span>
                                             <IconButton
                                                 disabled={t.completedDate && true}
                                                 edge="end"
@@ -194,7 +193,7 @@ export default function Tasks() {
                                 >
                                         <TaskToggle setCompleteDate={(v) => setCompleteDate(t, v)} val={t.completedDate ?? false} />
                                     <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
-                                    secondary={`Aya: ${t.fromAya} - ${t.toAya} \u00A0\u00A0\u00A0 Due: ${t.dueDate}`}/>
+                                    secondary={`Aya: ${t.fromAya} - ${t.toAya} \u00A0\u00A0\u00A0 Due: ${t.dueDate} \u00A0\u00A0\u00A0 ${t.completedDate ? "COMPLETED - " : "PENDING"} ${t.completedDate ?? ""}`}/>
                                     
                                 </ListItem>
 

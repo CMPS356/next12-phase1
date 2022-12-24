@@ -86,7 +86,7 @@ export default function AddTask() {
 
         taskService.create(task);
         setSuccess(true)
-        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id });
+        setTask({ ...task, studentId: students[0].studentId, surahId: _surahs[0].id, type: "Memorization", dueDate: `${tomorrowsDate().toDateString().substring(4)}` });
     };
 
     useEffect(()=>{

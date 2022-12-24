@@ -172,7 +172,7 @@ export default function UpdateTask({ onClose, open, task: _task, selectedValue }
                     sx={{ mt: 3, mb: 2, width: "300px", marginY:"40px", backgroundColor: "#254e58" }}
                     onClick={updateTask}
                 >
-                    Add Task
+                    Update Task
                 </Button>
                 </Stack>
       </Dialog>

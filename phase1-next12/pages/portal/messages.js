@@ -189,6 +189,7 @@ export default function Page() {
                 </Demo>
 
             </Box>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "30px", marginBottom: "30px" }}></hr>
 
             <Box sx={{ flexGrow: 1, width: "900px", height: "30%", overflow: "auto", outline: "solid", outlineColor: "#FAF9F6", padding: "15px" }}>
                 <h2 style={{ display: !student && "none" }}>Chat with: {student?.firstName} {student?.lastName}</h2>

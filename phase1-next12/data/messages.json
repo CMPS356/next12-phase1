@@ -46,11 +46,6 @@
         "senderID": 501,
         "recepientID": 1,
         "text": "images uploaded!",
-        "images": [
-            "blob:http://localhost:3000/4db4e1cc-302a-4071-b99f-ab112022422f",
-            "blob:http://localhost:3000/3381738a-66de-4ca7-8ae8-0e8681c9be29",
-            "blob:http://localhost:3000/7a60b0c7-051a-40c4-a4b7-19199190b75b"
-        ],
         "date": "Mon Dec 19 2022 - 1:42:19 AM"
     },
     {
@@ -77,9 +72,6 @@
     {
         "id": "cbc181df-cbf8-4c61-b464-ea6df43f12d3",
         "text": "Please take a look at your child's schedule",
-        "images": [
-            "blob:http://localhost:3000/f6f6bcb2-c80b-4e4f-a869-3c567b13949b"
-        ],
         "senderID": 501,
         "recepientID": 5,
         "date": "Sat Dec 24 2022 - 1:41:58 AM"

@@ -128,6 +128,7 @@ export default function Page() {
                 </Demo>
 
             </Box>
+            <hr style={{ border: "1px lightgray rounded", width: "900px", marginTop: "30px", marginBottom: "40px" }}></hr>
             <TextField
                 sx={{
                     width: "60%", display: userContext.role !== "coordinator" && "none" 
