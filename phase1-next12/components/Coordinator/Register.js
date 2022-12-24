@@ -129,16 +129,16 @@ const Register = () => {
 
   return (
     <>
-
-        <Stack flexDirection="row" sx={{ marginTop: "30px" }}>
-          <HowToRegIcon fontSize="large" sx={{ marginRight: "5px" }} />
-          <Typography
-            variant="h5"
-            sx={{ fontSize: "27px", marginBottom: "80px", fontFamily: "unset" , textDecorationLine: "underline"}}
-          >
-            Registeration
-          </Typography>
-        </Stack>
+    <Stack flexDirection="row" >
+    <div style={{ padding: "20px 20px 0px 20px", marginRight: "10px", borderRadius:"3px", height:"78px", backgroundColor:"#E0E8EC"}}><HowToRegIcon fontSize="large" sx={{}}/></div>
+    <Typography
+      variant="h5"
+      sx={{ fontSize: "27px", marginBottom: "30px", fontFamily: "unset" , textDecorationLine: "underline", backgroundColor:"#E0E8EC", padding: "20px", borderRadius:"3px", width:"100%"}}
+    >
+      Registeration
+    </Typography>
+  </Stack>
+  <div style={{borderTop:"1px lightgray ridge", maxWidth: "100%",  marginBottom: "80px"}}></div>
         <Box
         sx={{
           display: "flex",
@@ -155,7 +155,7 @@ const Register = () => {
           >
             <Stack
               flexDirection="column"
-              sx={{ width: "350px", alignItems: "center", marginLeft: "50px" }}
+              sx={{ width: "350px", alignItems: "center", marginLeft: "20px" }}
             >
               <Typography component="h1" variant="h5" sx={{...styleBlock.margin,  textDecorationLine: "underline"}}>
                 Parent Information
