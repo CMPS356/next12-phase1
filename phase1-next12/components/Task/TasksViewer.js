@@ -124,8 +124,7 @@ export default function TasksViewer() {
                                                 <AssignmentIcon />
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`}  secondary={`Aya: ${t.fromAya} - ${t.toAya} \u00A0\u00A0\u00A0 Due: ${t.dueDate} \u00A0\u00A0\u00A0 ${t.completedDate ? "COMPLETED - " : "PENDING"} ${t.completedDate ?? ""}`}/>
                                         <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
                                         <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
@@ -230,8 +229,7 @@ export default function TasksViewer() {
                                             </Avatar>
                                         </ListItemAvatar>
                                         <ListItemText primary={`${i + 1} - ${t.type}   of   ${surahs.find(surah => surah.id == t.surahId).englishName} - ${students.find(s => s.studentId == t.studentId)?.firstName}`} 
-                                        secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate || ""}`}/>
-                                        <span style={{ marginRight: "20px", fontSize: "12px"}}>{`${t.completedDate ? 'COMPLETED' : 'PENDING'}`}</span>
+                                        secondary={`Feedback: ${t.comment || "-"} \u00A0\u00A0\u00A0 Mastery Level: ${t.masteryLevel  || "-"} \u00A0\u00A0\u00A0 ${t.completedDate ? "COMPLETED - " : "PENDING"} ${t.completedDate ?? ""}`}/>
                                         <span style={{ marginRight: "20px", fontSize: "12px"}}>{`AYA: ${t.fromAya} - ${t.toAya} `}</span>
                                         <span style={{ marginRight: "20px", fontSize: "12px"}}>{`DUE: ${t.dueDate}`}</span>
                                     </ListItem>
