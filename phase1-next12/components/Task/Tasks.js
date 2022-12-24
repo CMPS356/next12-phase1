@@ -151,8 +151,8 @@ export default function Tasks() {
                 <Button onClick={()=>{setSelectedName('-'); setSelectedStatus('all')}} sx={{width: "200px", marginLeft:"300px"}}>Show All Tasks</Button>
             </Stack>
 
-            <Grid item xs={12} md={6}>
-                <Box sx={{ flexGrow: 1, width: "1000px", height: "450px", overflow: "auto" }}>
+            <Grid item xs={10} md={6}>
+                <Box sx={{ flexGrow: 1, width: "950px", height: "450px", overflow: "auto" }}>
                     <List sx={{ height: "90px", marginTop: "50px" }}>
                         {tasks.filter(t => students.find(tt => tt.studentId == t.studentId)).map((t, i) =>
                             <>
@@ -180,7 +180,7 @@ export default function Tasks() {
                                                 <BorderColorIcon />
                                             </IconButton>
                                             <IconButton
-                                                disabled={t.completedDate && true}
+                                                // disabled={t.completedDate && true}
                                                 edge="end"
                                                 aria-label="delete"
                                                 sx={{ marginLeft: "50px"}}

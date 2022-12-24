@@ -492,7 +492,7 @@ const Register = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 3, mb: 2, marginLeft: "50px", width: "860px" , backgroundColor:"#254e58"}}
+            sx={{ mt: 3, mb: 2, marginLeft: "20px", width: "860px" , backgroundColor:"#254e58"}}
             onClick={handleSubmit}
           >
             Register

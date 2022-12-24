@@ -33,9 +33,9 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
             toAya: _task.toAya,
             type: _task.type,
             dueDate: _task.dueDate,
-            completedDate: `${new Date().toDateString().substring(4)}`,
-            masteryLevel: 'excellent',
-            comment: ""
+            completedDate: _task.completedDate ?? `${new Date().toDateString().substring(4)}`,
+            masteryLevel: _task.masteryLevel ?? 'excellent',
+            comment: _task.comment ?? ''
         })
     }, [open])
 
@@ -83,7 +83,7 @@ export default function Comments({ onClose, open, task: _task, selectedValue }) 
                     required
                     value={task.completedDate}
                     name="completedDate"
-                    label="Due Date"
+                    label="Completion Date"
                     id="completedDate"
                     onChange={handleChange}
                 />
