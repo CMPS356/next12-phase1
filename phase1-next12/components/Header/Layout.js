@@ -22,7 +22,7 @@ export default function Layout({ children }) {
             <hr style={{height:"0px", margin:'0px', backgroundColor:"teal"}}></hr>
             </div>
 
-            <main style={{ marginInline: router.pathname=='/' ? "0px" : "270px", marginTop: router.pathname=='/' ? "0px" : "50px", height: '1100px' }}>
+            <main style={{ marginInline: router.pathname=='/' ? "0px" : "270px", marginTop: router.pathname=='/' ? "0px" : "50px", height: '1150px' }}>
                 {children}
             </main>
 
